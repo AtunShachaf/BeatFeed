@@ -1,6 +1,6 @@
 using System;
 
-namespace MusiCloud.Models
+namespace BeatBuzz.Models
 {
     public class ErrorViewModel
     {

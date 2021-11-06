@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 
 
-namespace MusiCloud.Models
+namespace BeatBuzz.Models
 {
     public class User
     {
