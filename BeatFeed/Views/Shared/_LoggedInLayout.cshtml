@@ -3,8 +3,8 @@
 <head>
     <title>@ViewData["Title"] - BeatFeed</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Welcome BeatFeed">
-    <meta name="keywords" content="music, clips, BeatFeed">
+    <meta name="description" content="SolMusic HTML Template">
+    <meta name="keywords" content="music, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
@@ -38,7 +38,9 @@
     <!-- Header section -->
     <header class="header-section clearfix">
         <span class="site-logo">
-            <img src="~/img/logo2.jpeg" alt="">
+            <a asp-controller="Home" asp-action="UserHome">
+                <img src="~/img/logo.png" alt="">
+            </a>
         </span>
         <div class="header-right">
             <a asp-controller="Users" asp-action="UserSettings" class="hr-btn">Account Settings</a>
@@ -73,7 +75,7 @@
 
     <!-- Playlist section end -->
     <!--====== Javascripts & Jquery ======-->
-    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery.slicknav.min.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>

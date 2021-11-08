@@ -32,16 +32,18 @@ namespace BeatFeed.Controllers
             var listOfalbums = (from n in _context.Album where n.ArtistId.ToString() == artistId select n.Id);
 
             // Get the all the songs that belong to the artist
-            var query = from s in _context.Song
-                        where listOfalbums.Contains(s.AlbumId)
-                        join a in _context.Album on s.AlbumId equals a.Id
+            var query = from song in _context.Song
+                        where listOfalbums.Contains(song.AlbumId)
+                        join album in _context.Album on song.AlbumId equals album.Id    
                         select new
                         {
-                           songId = s.Id,
-                           name = s.Name,
-                           songLink = s.LinkToPlay,
-                           album = s.Album.Name,
-                           imgLink = s.Album.ImageLink
+                           songId = song.Id,
+                           name = song.Name,
+                           songLink = song.LinkToPlay,
+                           album = song.Album.Name,
+                           imgLink = song.Album.ImageLink,
+                           clipURL = song.ClipURL
+                            
                         };
 
             var songs = await query.ToListAsync();
@@ -95,6 +97,7 @@ namespace BeatFeed.Controllers
         {
             if (ModelState.IsValid)
             {
+                song.ClipURL = song.LinkToPlay.Replace("watch?v=", "embed/");
                 _context.Add(song);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -128,7 +131,7 @@ namespace BeatFeed.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CounterPlayed,LinkToPlay,AlbumId")] Song song)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CounterPlayed,LinkToPlay,ClipURL,AlbumId")] Song song)
         {
             if (id != song.Id)
             {

@@ -102,7 +102,7 @@ namespace BeatFeed.Controllers
                 List<Song> results = new List<Song>();
 
                 var songs = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
-                var albums = await _context.Song.Include(o => o.Album).Where(c => c.Album.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
+                var albums = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
                 var artists = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Artist.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
 
                 foreach (var song in songs)
@@ -116,13 +116,13 @@ namespace BeatFeed.Controllers
 
                 }
 
-                foreach (var song in albums)
+                foreach (var album in albums)
                 {
-                    bool containsItem = results.Any(item => item.Id == song.Id);
+                    bool containsItem = results.Any(item => item.Id == album.Id);
 
                     if (!containsItem)
                     {
-                        results.Add(song);
+                        results.Add(album);
                     }
 
                 }

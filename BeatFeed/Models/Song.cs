@@ -18,6 +18,7 @@ namespace BeatFeed.Models
         public int CounterPlayed { get; set; }
 
         public string LinkToPlay { get; set; }
+        public string ClipURL { get; set; }
 
         // FK from album table
         [ForeignKey("Album")]
