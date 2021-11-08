@@ -1,0 +1,59 @@
+﻿
+@model BeatFeed.Models.Playlist
+
+@{
+    ViewData["Title"] = "Welcome";
+    Layout = "~/Views/Shared/_LoggedInLayout.cshtml";
+    string imageId = Model.ImageId.ToString() + ".jpg";
+
+}
+
+<!-- Title section -->
+<section class="category-section spad">
+    <div class="container-fluid">
+
+        <!-- Playlist name -->
+        <div class="section-title">
+            <h2>
+                @Html.DisplayFor(model => model.Name)
+            </h2>
+        </div>
+        <!-- End of Playlist name -->
+        <!-- Delete playlist button -->
+        <div class="d-flex flex-row-reverse">
+            <form asp-action="DeletePlaylist">
+                <input id="playlist_id" type="hidden" name="playlist_id" value="@Html.DisplayFor(model => model.Id)" />
+                <submit>
+                    <input type="submit" class="site-btn" value="delete playlist">
+                </submit>
+            </form>
+        </div>
+        <!-- End Delete playlist button -->
+
+        <div class="clearfix"></div>
+
+        <!-- Photo of playlist -->
+        <div class="row">
+            <div class="mx-auto">
+                <div class="category-item">
+                    <img src="~/img/playlist/@imageId" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- End of Currently playing -->
+
+        <div class="clearfix"></div>
+</section>
+
+<!-- Songs section  -->
+<section class="songs-section">
+    <div id="LoadSongs" class="container"></div>
+</section>
+
+@section Scripts
+{
+    <!-- Audio Player and Initialization -->
+    <script src="~/js/jquery.jplayer.min.js"></script>
+    <script src="~/js/jplayerInit.js"></script>
+    <script src="~/js/PlaylistSongs.js"></script>
+}
