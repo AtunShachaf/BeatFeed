@@ -10,25 +10,32 @@
         <div class="row">
             <div class="col-lg-6 p-0">
                 <!-- Map -->
-                <div id="MapDiv" style="width: 1000px; height: 1000px">
+                <div id="MapDiv" style="width: 992px; height: 992px">
                 </div>
             </div>
             <div class="col-lg-6 p-0">
-                <div class="contact-warp">
-                    <div class="section-title mb-0">
-                        <h2>@Html.DisplayFor(model => model.Name) Upcomings</h2>
+                <div class="contact-container">
+                    <div class="section-title mb-0" style="text-align: center">
+                        <h3>@Html.DisplayFor(model => model.Name)'s Performances:</h3>
+                        <p>View previous and upcoming concerts dates and locations.</p>
                     </div>
-                    <p>Follow your artist in the world, and view upcoming tours.</p>
-                    <ul id="concertDetails"></ul>
                 </div>
-
-
+                <div class="contact-container">
+                    <div class="col-6">
+                        <h4>Upcoming Concerts:</h4>
+                        <ul id="concertDetails"></ul>
+                    </div>
+                    <div class="col-6">
+                        <h4>Previous Concerts:</h4>
+                        <ul id="concert-prev"></ul>
+                    </div>
+                </div>
                 <!-- weather -->
-                <div class="contact-warp">
+                <div class="weather-container">
                     <div class="weather__container">
                         <div class="weather-side">
                             <div class="search-form search-song-filter">
-                                <input id="CityName" type="text" placeholder="Weather Lookup">
+                                <input id="CityName" type="text" placeholder="Enter a city">
                                 <button id="WeatherLookup">Check Weather</button>
                             </div>
                             <span class="alert-danger"></span>
@@ -42,7 +49,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    <strong>Weather Symbol Icon :</strong>
+                                    <strong>Weather :</strong>
                                     <img id="imgWeatherIconUrl" alt="" src="" title="Weather Icon" />
                                 </td>
                             </tr>
@@ -64,15 +71,20 @@
                         </table>
                     </div>
                 </div>
-
             </div>
+           
+
+            
+
+        </div>
+    </div>
 </section>
 
-<input type="hidden" id="ArtistId" value="@Html.DisplayFor(model => model.Id)"</input>
+<input type="hidden" id="ArtistId" value="@Html.DisplayFor(model => model.Id)" />
 
 @section Scripts
 {
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw4M0s-wdhkjGK1L5BkWzyilxKp15QnGY&callback=initMap&libraries=&v=weekly" defer></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgjU0arQBTCn5xhBVHHjmEbdIP9cYtujM&callback=initMap&libraries=&v=weekly" defer></script>
     <script src="~/js/Concerts.js"></script>
     <script src="~/js/weather.js"></script>
 }

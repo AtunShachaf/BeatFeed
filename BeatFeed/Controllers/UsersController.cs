@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WeedProject3;
 
 namespace BeatFeed.Controllers
 {
@@ -38,7 +39,7 @@ namespace BeatFeed.Controllers
         [AllowAnonymous]
         public IActionResult Login(User UserToLogin)
         {
-            var user = _context.User.FirstOrDefault(u => u.Email == UserToLogin.Email && u.Password == UserToLogin.Password);
+            var user = _context.User.FirstOrDefault(u => u.Email == UserToLogin.Email && u.Password == Crypto.SHA1(UserToLogin.Password));
 
             if (user != null)
             {
@@ -89,7 +90,7 @@ namespace BeatFeed.Controllers
 
                     var NewUser = new User();
                     NewUser.Email = UserToCreate.Email;
-                    NewUser.Password = UserToCreate.Password;
+                    NewUser.Password = Crypto.SHA1(UserToCreate.Password);
                     NewUser.DisplayName = UserToCreate.DisplayName;
                     NewUser.UserType = "User";
 
@@ -175,8 +176,8 @@ namespace BeatFeed.Controllers
             }
 
             // Get the variables    
-            var CurrentPassword = PasswordReset.CurrentPassword;
-            var NewPassword = PasswordReset.NewPassword;
+            var CurrentPassword = Crypto.SHA1(PasswordReset.CurrentPassword);
+            var NewPassword = Crypto.SHA1(PasswordReset.NewPassword);
             var ConfirmNewPassword = PasswordReset.ConfirmNewPassword;
 
             {

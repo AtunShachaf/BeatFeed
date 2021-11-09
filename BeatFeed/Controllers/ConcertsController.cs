@@ -72,7 +72,8 @@ namespace BeatFeed.Controllers
         {
 
             //Assign API KEY
-            string appId = "d544b61dcbdf99ece48ec5f7dec17be3";
+            //string appId = "d544b61dcbdf99ece48ec5f7dec17be3";
+            string appId = "1336c2e7d3265df150fa0d2c46713860";
 
             //API path with CITY parameter and other parameters.  
             string url = string.Format("http://api.openweathermap.org/data/2.5/weather?q={0}&units=metric&cnt=1&APPID={1}", City, appId);

@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - BeatFeed</title>
     <meta charset="UTF-8">
     <meta name="description" content="Welcome BeatFeed">
-    <meta name="keywords" content="music, clips, BeatFeed">
+    <meta name="keywords" content="music, playlists, BeatFeed">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
@@ -36,7 +36,9 @@
     <!-- Header section -->
     <header class="header-section clearfix">
         <span class="site-logo">
-            <img src="~/img/logo2.jpeg" alt="">
+            <a asp-controller="Home" asp-action="Home">
+                <img src="~/img/logo.png" alt="">
+            </a>
         </span>
         <div class="header-right">
             <a href="#" class="hr-btn">Help</a>
@@ -58,36 +60,47 @@
                 <h2>How it works</h2>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="how-item">
                         <div class="hi-icon">
-                            <img src="~/img/icons/brain.png" alt="">
+                            <img src="~/img/icons/create.png" alt="">
                         </div>
                         <h4>Create an account</h4>
                         <p>
-                            Create your account quickly to unlock unlimited access to your favorite music.
+                            Create your account quickly to unlock unlimited access to the music you desire.
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="how-item">
                         <div class="hi-icon">
-                            <img src="~/img/icons/pointer.png" alt="">
+                            <img src="~/img/icons/choose.png" alt="">
                         </div>
                         <h4>Choose Your music</h4>
                         <p>
-                            Songs, artists, music clips, and more... we have at all. Choose your music and build playlists
+                            Songs, artists, genres, and more... we have it all. Choose your music and build playlists
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="how-item">
                         <div class="hi-icon">
-                            <img src="~/img/icons/smartphone.png" alt="">
+                            <img src="~/img/icons/listen.png" alt="">
                         </div>
-                        <h4>Listen Music</h4>
+                        <h4>Listen to your Playlist</h4>
                         <p>
-                            Wherever you are, whenever you feel like, enjoy BeatFeed
+                            Wherever you are, whenever you feel like, enjoy your music
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="how-item">
+                        <div class="hi-icon">
+                            <img src="~/img/icons/concert.png" alt="">
+                        </div>
+                        <h4>Upcoming concert</h4>
+                        <p>
+                            See when and where your favorite artists perform!
                         </p>
                     </div>
                 </div>
@@ -96,7 +109,7 @@
     </footer>
     <!-- Footer how to end -->
     <!--====== Javascripts & Jquery ======-->
-    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery.slicknav.min.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>

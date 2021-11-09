@@ -100,7 +100,7 @@ namespace BeatFeed.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Genre,ImageLink,ArtistLink")] Artist artist)
+        public async Task<IActionResult> Create([Bind("Id,Name,Genre,ImageLink,AristLink")] Artist artist)
         {
             if (ModelState.IsValid)
             {

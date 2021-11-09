@@ -40,7 +40,7 @@ namespace BeatFeed.Controllers
         [HttpPost]
         public ActionResult Tweet(string albumName)
         {
-            var message = "#BeatFeedWebApp A new album has just added to our library - " + albumName + "!";
+            var message = "#BeatFeedProject: A new album was just added to our library! - " + albumName + "!";
 
             TwitterService service = new TwitterService(_consumerKey, _consumerSecret);
             service.AuthenticateWith(_accessToken, _accessTokenSecret);
@@ -54,7 +54,7 @@ namespace BeatFeed.Controllers
         [HttpGet]
         public async Task<JsonResult> GetTweets()
         {
-            var searchWord = "#BeatFeedWebApp";
+            var searchWord = "#BeatFeedProject";
 
             var searchResponse = await
                 (from search in _twitterContext.Search

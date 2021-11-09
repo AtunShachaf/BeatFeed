@@ -188,17 +188,18 @@ namespace BeatFeed.Controllers
                 var listOfSongs = (from n in _context.SongToPlaylist where n.PlaylistId.ToString() == playlistId select n.SongId);
 
                 // Get all songs and their album data that are part of the playlist
-                var query = from s in _context.Song
-                            where listOfSongs.Contains(s.Id)
-                            join a in _context.Album on s.AlbumId equals a.Id
+                var query = from song in _context.Song
+                            where listOfSongs.Contains(song.Id)
+                            join album in _context.Album on song.AlbumId equals album.Id
                             select new
                             {
-                                songId = s.Id,
-                                name = s.Name,
-                                songLink = s.LinkToPlay,
-                                album = s.Album.Name,
-                                imgLink = s.Album.ImageLink,
-                                artistId = s.Album.ArtistId
+                                songId = song.Id,
+                                name = song.Name,
+                                songLink = song.LinkToPlay,
+                                album = song.Album.Name,
+                                imgLink = song.Album.ImageLink,
+                                artistId = song.Album.ArtistId,
+                                clipURL = song.ClipURL
                             };
 
                 var songs = await query.ToListAsync();
