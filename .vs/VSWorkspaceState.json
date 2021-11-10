@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BeatFeed",
+    "\\BeatFeed\\Views",
+    "\\BeatFeed\\Views\\Shared"
   ],
-  "SelectedNode": "\\BeatFeed.sln",
+  "SelectedNode": "\\BeatFeed\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

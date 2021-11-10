@@ -3,30 +3,42 @@
     Layout = "~/Views/Shared/_LoggedInAdminLayout.cshtml";
 }
 
-<section class="playlist-section spad">
+<section class="playlist-section myOverflowFix">
+    </br></br>
     <div class="container-fluid">
-        <div class="section-title">
-            <h2> Statistics Page </h2>
+        <div class="row">
+            <div class="col-lg-12 statistics-title">
+                <h2>BeatFeed Statistics</h2>
+            </div>
+        </div>
+    </div>
+    </br></br></br></br>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-lg-6">
         </div>
         <div class="clearfix"></div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h5>Let's see what's happening in BeatFeed</h5>
+        <div id="AllPlaylists" class="row playlist-area statisticsGraphs">
+            <div class="col-lg-6 graph1-title">
+                <h3>
+                    Artists on BeatFeed By Genre
+                </h3>
+            </div>
+            <div class="col-lg-6 graph2-title">
+                <h3>
+                    Number of concerts for each city
+                </h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 graph1">
+                    <div id="graph1"></div>
+                </div>
+                <div class="col-lg-6 graph2">
+                    <div id="graph2"></div>
                 </div>
             </div>
-            <div class="clearfix"></div>
-            <div id="AllPlaylists" class="row playlist-area">
-                <h3>
-                    Artist in BeatFeed By Genre
-                    <div id="graph1"></div>
-                </h3>
-                <h3>
-                    number of concerts for each city
-                    <div id="graph2"></div>
-                </h3>
-            </div>
         </div>
+    </div>
 </section>
 
 
@@ -35,71 +47,6 @@
 {
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
-
-    <script>
-        var width = 900, height = 700;
-        var colors = d3.scaleOrdinal(d3.schemePastel1);
-        var svg = d3.select("#graph1").append("svg")
-            .attr("width", width).attr("height", height);
-        var details = @(Html.Raw(@ViewBag.genres));
-        var data = d3.pie().sort(null).value(function (d) { return d.Count;})(details);
-        var segments = d3.arc()
-            .innerRadius(0)
-            .outerRadius(200)
-            .padAngle(.05)
-            .padRadius(50);
-        var sections = svg.append("g").attr("transform", "translate(250,250)")
-            .selectAll("path").data(data);
-        sections.enter().append("path").attr("d", segments)
-            .attr("fill", function (d) { return colors(d.data.Count); });
-        var content = d3.select("g").selectAll("text").data(data);
-        var legends = svg.append("g").attr("transform", "translate(500,100)")
-            .selectAll(".legends").data(data);
-        var legend = legends.enter().append("g")
-            .classed("legends", true)
-            .attr("transform", function (d, i) { return "translate(0," + (i + 1) * 30 + ")"; });
-        legend.append("rect")
-            .attr("width", 20)
-            .attr("height", 20)
-            .attr("fill", function (d) { return colors(d.data.Count); });
-        legend.append("text")
-            .text(function (d) { return d.data.Count + " from " + d.data.Genre; })
-            .classed("text", true)
-            .attr("x", 30)
-            .attr("y", 14);
-    </script>
-
-    <script>
-        var width = 900, height = 700;
-        var colors = d3.scaleOrdinal(d3.schemePastel1);
-        var svg = d3.select("#graph2").append("svg")
-            .attr("width", width).attr("height", height);
-        var details = @(Html.Raw(@ViewBag.places));
-        var data = d3.pie().sort(null).value(function (d) { return d.Count;})(details);
-        var segments = d3.arc()
-            .innerRadius(0)
-            .outerRadius(200)
-            .padAngle(.05)
-            .padRadius(50);
-        var sections = svg.append("g").attr("transform", "translate(250,250)")
-            .selectAll("path").data(data);
-        sections.enter().append("path").attr("d", segments)
-            .attr("fill", function (d) { return colors(d.data.Count); });
-        var content = d3.select("g").selectAll("text").data(data);
-        var legends = svg.append("g").attr("transform", "translate(500,100)")
-            .selectAll(".legends").data(data);
-        var legend = legends.enter().append("g")
-            .classed("legends", true)
-            .attr("transform", function (d, i) { return "translate(0," + (i + 1) * 30 + ")"; });
-        legend.append("rect")
-            .attr("width", 20)
-            .attr("height", 20)
-            .attr("fill", function (d) { return colors(d.data.Count); });
-        legend.append("text")
-            .text(function (d) { return d.data.Count + " from " + d.data.City; })
-            .classed("text", true)
-            .attr("x", 30)
-            .attr("y", 14);
-    </script>
+    <script type="text/javascript" src="/js/Statistics.js"></script>
 
 }

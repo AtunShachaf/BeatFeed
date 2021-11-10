@@ -56,5 +56,13 @@ $(window).on('load', function() {
 		autoplay: true
 	});
 
+
+	$(document).ready(function (event) {
+		$('.submit').click(function (e) {
+			var value = $('.searchInput').val();
+			if (value == '')
+				e.preventDefault();
+		})
+	})
 })(jQuery);
 

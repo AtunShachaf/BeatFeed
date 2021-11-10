@@ -21,6 +21,17 @@ namespace BeatFeed.Controllers
             _context = context;
         }
 
+        private class GanreCount
+        {
+            public string Ganre { get; set; }
+            public int Count { get; set; }
+
+            public GanreCount(string a, int b)
+            {
+                Ganre = a;
+                Count = b;
+            }
+        }
 
         [Authorize(Roles = "User")]
         public async Task<IActionResult> Artist(String id)
@@ -198,6 +209,32 @@ namespace BeatFeed.Controllers
         private bool ArtistExists(int id)
         {
             return _context.Artist.Any(e => e.Id == id);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetGanreListAjax()
+        {
+            Dictionary<string, int> GanreCount = new Dictionary<string, int>();
+            List<GanreCount> GanreList = new List<GanreCount>();
+            var artists = await _context.Artist.ToListAsync();
+            foreach(var artist in artists)
+            {
+                var ganres = artist.Genre.Split(",");
+                foreach(var ganre in ganres)
+                {
+                    if (GanreCount.ContainsKey(ganre))
+                    {
+                        GanreCount[ganre] += 1;
+                    }
+                    else
+                        GanreCount[ganre] = 1;
+                }
+            }
+            foreach (KeyValuePair<string, int> entry in GanreCount)
+            {
+                GanreList.Add(new GanreCount(entry.Key, entry.Value));
+            }
+            return Json(GanreList);
         }
     }
 }

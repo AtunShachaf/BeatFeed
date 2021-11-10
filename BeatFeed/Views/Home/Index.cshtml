@@ -3,24 +3,24 @@
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 
-<section class="intro-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h2>Your Music Your Life</h2>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    Join to BeatFeed with more than 100K songs and artists.
-                    Support the music community and disocver new artists and songs everyday.
-                </p>
-                <a asp-controller="Users" asp-action="Login" class="site-btn site-login">Login</a>
-                <span class=.hs-item>
-                    <a asp-controller="Users" asp-action="SignUp" class="site-btn">Sign Up</a>
-                </span>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="section-title index-title">
+            <h2>Your Music, Your Life</h2>
         </div>
     </div>
-</section>
+    <div class="row index-text">
+        <p>
+            Join BeatFeed, An app with more than 100,000 songs and artists.</br>
+            Support the music community and disocver new artists and songs of your taste everyday.
+        </p>
+    </div>
+    <div class="row index-buttons justify-content-center">
+        <div class="col-lg-6 index-login">
+            <a asp-controller="Users" asp-action="Login" class="site-btn site-login">Login</a>
+        </div>
+        <div class="col-lg-6 index-signup">
+            <a asp-controller="Users" asp-action="SignUp" class="site-btn">Sign Up</a>
+        </div>
+    </div>
+</div>

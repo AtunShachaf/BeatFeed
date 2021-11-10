@@ -5,31 +5,34 @@
 
 }
 
-<section class="playlist-section spad">
+<section class="playlist-section spad2">
     <div class="container-fluid">
-        <div class="section-title">
-            <h2> Welcome @User.Identity.Name</h2>
+        <div class="row">
+            <div class="section-title admin-title">
+                <h2> Welcome @User.Identity.Name</h2>
+            </div>
         </div>
         <div class="clearfix"></div>
         <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h3>Available management actions</h3>
-                </div>
+            <div class="section-title admin-panel-title">
+                <h3>Admin's Management Panel</h3>
             </div>
-            <div class="clearfix"></div>
-            <div id="AllPlaylists" class="row playlist-area">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div id="AllPlaylists" class="row playlist-area admin-panel-buttons">
                 <form>
-                    <a asp-controller="Admins" asp-action="Index" class="site-btn site-login">Edit Admins</a>
-                    <a asp-controller="Artists" asp-action="Index" class="site-btn site-login">Edit Artists</a>
-                    <a asp-controller="Concerts" asp-action="Index" class="site-btn site-login">Edit Concerts</a>
-                    <a asp-controller="Albums" asp-action="Index" class="site-btn site-login">Edit Albums</a>
-                    <a asp-controller="Songs" asp-action="Index" class="site-btn site-login">Edit Songs</a>
-                    <a asp-controller="Admins" asp-action="Statistics" class="site-btn site-login">Get Statistics</a>
+                    <a asp-controller="Admins" asp-action="Index" class="site-btn site-login">Admins</a>
+                    <a asp-controller="Artists" asp-action="Index" class="site-btn site-login">Artists</a>
+                    <a asp-controller="Concerts" asp-action="Index" class="site-btn site-login">Concerts</a>
+                    <a asp-controller="Albums" asp-action="Index" class="site-btn site-login">Albums</a>
+                    <a asp-controller="Songs" asp-action="Index" class="site-btn site-login">Songs</a>
+                    <a asp-controller="Admins" asp-action="Statistics" class="site-btn site-login">Statistics</a>
                     <a asp-controller="Tweets" asp-action="Index" class="site-btn site-login">Tweets</a>
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

@@ -15,7 +15,7 @@ function LoadConcerts(res) {
 
         // The map, centered at Uluru
         const map = new google.maps.Map(document.getElementById("MapDiv"), {
-            zoom: 10,
+            zoom: 4,
             center: uluru,
         });
 
@@ -31,7 +31,7 @@ function LoadConcerts(res) {
         const uMarker = '/img/marker.png';
         // The map, centered at Uluru
         const map = new google.maps.Map(document.getElementById("MapDiv"), {
-            zoom: 5,
+            zoom: 2.5,
             center: uluru
         });
 
@@ -50,7 +50,7 @@ function LoadConcerts(res) {
                     icon: uMarker
                 });
                 content +=
-                    '<li><strong>Concert Title      :        </strong>' + x.name + '</br>' +
+                    '<li><strong>Concert Title : </strong>' + x.name + '</br>' +
                     '<strong>Address : </strong>' + x.address + ', ' + x.city + ', ' + x.country + '</br>' +
                     '<strong>Date : </strong>' + date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear() + '</li>' + '</br>' +
                     '<div class="clearfix"></div>';
@@ -71,8 +71,19 @@ function LoadConcerts(res) {
             }
         });
 
-        $('#concertDetails').html(content);
-        $('#concert-prev').html(prevContent);
+        if (content != '')
+            $('#concertDetails').html(content);
+        else {
+            $('#concertDetails').parent().css("text-align", "center");
+            $('#concertDetails').html('<strong>There are no upcoming concerts. :(</strong>')
+        }
+
+        if (prevContent != '')
+            $('#concert-prev').html(prevContent);
+        else {
+            $('#concert-prev').parent().css("text-align", "center");
+            $('#concert-prev').html('<strong>There were no upcoming concerts. :(</strong>');
+        }
 
     }
 

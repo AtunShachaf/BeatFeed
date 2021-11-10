@@ -40,15 +40,15 @@ function LoadSongs(res) {
     content = ''
     playlistId = $("#playlist_id").val();
 
-    console.log(res.songs.length)
-
+    console.log(res.songs.length);
 
     if (res.errorCode) {
-        content = '<h3>No songs in this playlist :/</h3>';
+        content = '<h3>Error Occur.</h3>';
     }
-
     else if (res.songs.length == 0) {
-        content = '<h3>No songs in this playlist :/</h3>';
+        content = '<h3>There are no songs in this playlist :/</h3><strong style="position:relative;left:9px;font-size:17px;">Please use the search bar and add some songs to the list.</strong>';
+        $('#LoadSongs').html(content);
+        return;
     }
 
     else {
@@ -56,12 +56,13 @@ function LoadSongs(res) {
         var count_from_one = 1;
         res.songs.forEach(x => {
 
-            content += '    <div class="container">' +
+            content += '    <div class="container ">' +
                 '        <!-- song -->' +
                 '        <div class="song-item">' +
-                '            <div class="row">' +
+                '            <div class="row justify-content-center">' +
                 '                <div class="col-lg-4">' +
                 '                    <div class="song-info-box">' +
+                '                       <a href="/Artists/Artist/' + x.artistId + '">' +
                 '                        <img src="' + x.imgLink + '" alt="">' +
                 '                        <div class="song-info">' +
                 '                            <a href="/Artists/Artist/' + x.artistId + '">' +
@@ -87,7 +88,7 @@ function LoadSongs(res) {
             }
             else
                 content += '                         <div class="player_controls_box">';
-            content +='                                  <button class="jp-prev player_button" tabindex="' + count_from_zero + '"></button>' +
+            content += '                                  <button class="jp-prev player_button" tabindex="' + count_from_zero + ' onClick="RewindTrack()"></button>' +
                 '                                        <button class="jp-play player_button" tabindex="' + count_from_zero + '"></button>' +
                 '                                        <button class="jp-next player_button" tabindex="' + count_from_zero + '"></button>' +
                 '                                        <button class="jp-stop player_button" tabindex="' + count_from_zero + '"></button>' +

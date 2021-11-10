@@ -17,10 +17,21 @@ namespace BeatFeed.Controllers
     public class ConcertsController : Controller
     {
         private readonly BeatFeedContext _context;
-
         public ConcertsController(BeatFeedContext context)
         {
             _context = context;
+        }
+
+        private class CityCount
+        {
+            public string City { get; set; }
+            public int Count { get; set; }
+
+            public CityCount(string a, int b)
+            {
+                City = a;
+                Count = b;
+            }
         }
 
         [Authorize(Roles = "User")]
@@ -258,6 +269,28 @@ namespace BeatFeed.Controllers
         private bool ConcertExists(int id)
         {
             return _context.Concert.Any(e => e.Id == id);
+        }
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetCityListAjax()
+        {
+            Dictionary<string, int> ctCounter = new Dictionary<string, int>();
+            List<CityCount> ctList = new List<CityCount>();
+            var concerts = await _context.Concert.ToListAsync();
+            foreach (var concert in concerts)
+            {
+                var city = concert.City;
+                if (ctCounter.ContainsKey(city))
+                {
+                    ctCounter[city] += 1;
+                }
+                else
+                    ctCounter[city] = 1;
+            }
+            foreach(KeyValuePair<string, int> entry in ctCounter)
+            {
+                ctList.Add(new CityCount(entry.Key, entry.Value));
+            }
+            return Json(ctList);
         }
     }
 }

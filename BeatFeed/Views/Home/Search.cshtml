@@ -25,7 +25,7 @@
             </ul>
 
         </div>
-            
+
         <div class="clearfix"></div>
         <div class="row playlist-area">
 
@@ -36,9 +36,11 @@
 
                 foreach (var item in Model)
                 {
-                    <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
+                    <div class="mix col-lg-2 col-md-3 col-sm-3 genres">
                         <div class="playlist-item">
-                            <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
+                            <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
+                                <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
+                            </a>
                             <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
                                 <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
                             </a>
@@ -50,9 +52,11 @@
 
                     if (isInArtistList)
                     {
-                        <div class="mix col-lg-3 col-md-4 col-sm-6 artists">
+                        <div class="mix col-lg-2 col-md-3 col-sm-3 artists">
                             <div class="playlist-item">
-                                <img src=@Html.DisplayFor(modelItem => item.Album.Artist.ImageLink) alt="">
+                                <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
+                                    <img src=@Html.DisplayFor(modelItem => item.Album.Artist.ImageLink) alt="">
+                                </a>
                                 <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.ArtistId)">
                                     <h5>@Html.DisplayFor(modelItem => item.Album.Artist.Name)</h5>
                                 </a>
@@ -66,20 +70,22 @@
 
                     if (!isInAlbumList)
                     {
-                        <div class="mix col-lg-3 col-md-4 col-sm-6 movies">
+                        <div class="mix col-lg-2 col-md-3 col-sm-3 movies">
                             <div class="playlist-item">
-                                <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
+                                <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
+                                    <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
+                                </a>
                                 <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.ArtistId)">
                                     <h5>@Html.DisplayFor(modelItem => item.Album.Name)</h5>
                                 </a>
                             </div>
                         </div>
-                        }
-
-                        albums.Add(item.Album.ArtistId);
-
                     }
+
+                    albums.Add(item.Album.ArtistId);
+
                 }
+            }
         </div>
     </div>
 </section>
