@@ -1,86 +1,272 @@
-﻿@model IEnumerable<BeatFeed.Models.Song>
+@model IEnumerable<BeatFeed.Models.Song>
 
-@{
-    ViewData["Title"] = "Search";
-    Layout = "~/Views/Shared/_LoggedInLayout.cshtml";
-
-}
+@{ ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_LoggedInLayout.cshtml"; }
 
 <!-- Playlist section -->
+
 <section class="playlist-section spad">
-    <div class="container-fluid">
+    <div class="container-fluid" onload="mainWindow">
         <div class="section-title">
             <h2>Search results</h2>
         </div>
+        <ul class="playlist-filter controls">
+            <li class="control" data-filter=".genres">Songs</li>
+            <li class="control" data-filter=".artists">Artists</li>
+            <li class="control" data-filter=".movies">Albums</li>
+            <li id="clickme" class="control" data-filter=".all">All Playlist</li>
+        </ul>
         <div class="container">
-            <ul class="playlist-filter controls">
-                <li class="control" data-filter=".genres">Songs</li>
-                <li class="control" data-filter=".artists">Artists</li>
-                <li class="control" data-filter=".movies">Albums</li>
-                <li class="control" data-filter="all">All Playlist</li>
-                <br />
-                <li data-filter=".artists">Artists</li>
-                <li data-filter=".movies">Albums</li>
-                <li data-filter="all">All Playlist</li>
-            </ul>
+            <div class="mix genres">
+                <ul class="playlist-filter">
+                    <!-- songs that CounterPlayed > 10  -->
+                    <li>  <input type="checkbox" id="PopularS" name="PopularS" value="PopularS" onclick="changeSong(1)"> Popular</li>
+                    <!-- Album that Release_Date  this year -->
+                    <li><input type="checkbox" id="New" name="New" value="New" onclick="changeSong(3)"> New</li>
+                    <!-- Rock band -->
+                    <li><input type="checkbox" id="RockS" name="RockS" value="RockS" onclick="changeSong(2)"> Rock</li>
+                </ul>
+            </div>
+
+            <div class="mix artists">
+                <ul class="playlist-filter">
+                    <!-- has songs that CounterPlayed > 10  -->
+                    <li><input type="checkbox" id="Popular" name="Popular" value="Popular" onclick="changeArtist(1)"> Popular</li>
+                    <!-- rock band -->
+                    <li><input type="checkbox" id="Rock" name="Rock" value="Rock" onclick="changeArtist(2)"> Rock</li>
+                    <!-- Release_Date this year -->
+                    <li><input type="checkbox" id="Active" name="Active" value="Active" onclick="changeArtist(3)"> Active</li>
+                </ul>
+            </div>
 
         </div>
-            
+
+
+
         <div class="clearfix"></div>
         <div class="row playlist-area">
 
-            @{
-
-                List<int> artists = new List<int>();
+            @{ List<int> artists = new List<int>();
                 List<int> albums = new List<int>();
-
+        
                 foreach (var item in Model)
                 {
-                    <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
-                        <div class="playlist-item">
-                            <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
-                            <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
-                                <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
-                            </a>
-                        </div>
+                   
+                        <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
+                 
+                                        <div class="playlist-item">
+                                            <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
+                                            <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
+                                                <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                                            </a>
+                                            @if (item.CounterPlayed > 10)
+                                            {
+                                        <h5 class="popular" id="popular" style="display:none"></h5>
+                                        }
+                                            @if (item.Album.Genre.ToLower() == "rock")
+                                            {
+                                            <h5 class="rock" id="rock" style="display:none"></h5>
+                                            }
+
+                                            @if (item.Album.Release_Date.Year == DateTime.UtcNow.Year)
+                                            {
+                                                <h5 class="new" id="new" style="display:none"></h5>
+                                            }
+
+                                        </div>
+                           
+                
+
+                        </div> 
+                        bool isInArtistList = artists.IndexOf(item.Album.Artist.Id) != -1;
+
+                                if (!isInArtistList)
+                                {
+                <div class="mix col-lg-3 col-md-4 col-sm-6 artists">
+                    <div class="playlist-item">
+                        <img src=@Html.DisplayFor(modelItem => item.Album.Artist.ImageLink) alt="">
+                        <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
+                            <h5>@Html.DisplayFor(modelItem => item.Album.Artist.Name)</h5>
+                        </a>
+                        @if (item.CounterPlayed > 10)
+                        {
+                    <h5 class="popular" id="popular" style="display:none"></h5>}
+                        @if (item.Album.Genre.ToLower() == "rock")
+                        {
+                    <h5 class="rock" id="rock" style="display:none"></h5>}
+
+                        @if (item.Album.Release_Date.Year == DateTime.UtcNow.Year)
+                        {
+                    <h5 class="active" id="active" style="display:none"></h5>}
+
                     </div>
+                </div> artists.Add(item.Album.Artist.Id);
+                                }
 
+                                bool isInAlbumList = albums.IndexOf(item.Album.Id) != -1;
 
-                    bool isInArtistList = artists.IndexOf(item.Album.Artist.Id) == -1;
-
-                    if (isInArtistList)
-                    {
-                        <div class="mix col-lg-3 col-md-4 col-sm-6 artists">
-                            <div class="playlist-item">
-                                <img src=@Html.DisplayFor(modelItem => item.Album.Artist.ImageLink) alt="">
-                                <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.ArtistId)">
-                                    <h5>@Html.DisplayFor(modelItem => item.Album.Artist.Name)</h5>
-                                </a>
-                            </div>
-                        </div>
-
-                        artists.Add(item.Album.ArtistId);
-                    }
-
-                    bool isInAlbumList = albums.IndexOf(item.Album.Id) != -1;
-
-                    if (!isInAlbumList)
-                    {
-                        <div class="mix col-lg-3 col-md-4 col-sm-6 movies">
-                            <div class="playlist-item">
-                                <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
-                                <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.ArtistId)">
-                                    <h5>@Html.DisplayFor(modelItem => item.Album.Name)</h5>
-                                </a>
-                            </div>
-                        </div>
-                        }
-
-                        albums.Add(item.Album.ArtistId);
-
-                    }
-                }
+                                if (!isInAlbumList)
+                                {
+                <div class="mix col-lg-3 col-md-4 col-sm-6 movies">
+                    <div class="playlist-item">
+                        <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
+                        <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
+                            <h5>@Html.DisplayFor(modelItem => item.Album.Name)</h5>
+                        </a>
+                    </div>
+                </div> }
+                       
+                                
+                                 } }
         </div>
     </div>
 </section>
+<script>
+    window.addEventListener("load", function () {
+        document.getElementById("clickme").click();
+    });
+
+    function changeArtist(s) {
+        let victim = 0;
+        let reason = "active";
+        switch (s.toString(10)) {
+            case "1":
+                victim = document.getElementById("Popular");
+                reason = "popular";
+                break;
+
+            case "2":
+                victim = document.getElementById("Rock");
+                reason = "rock";
+                break;
+
+            default:
+                victim = document.getElementById("Active");
+        }
+        let all_ele = document.getElementsByClassName("playlist-item");
+
+        if (victim.checked) {
+            for (let i = 0; i <= all_ele.length; i++) {
+                if (all_ele[i] == undefined) { continue; }
+
+                // all are none
+                let flag = false;
+                for (let j = 0; j <= all_ele[i].childNodes.length; j++) {
+                    if (all_ele[i].childNodes[j] == undefined) { continue; }
+
+                    if (all_ele[i].childNodes[j].className == reason) {
+                        flag = true;
+                    }
+
+                }
+                if (flag == false) {
+                    all_ele[i].style = "display:none";
+                    all_ele[i][reason] = true;
+                }
+
+
+            }
+        }
+
+        else {
+            for (let i = 0; i <= all_ele.length; i++) {
+                if (all_ele[i] == undefined) { continue; }
+
+                if (all_ele[i][reason] != undefined) {
+                    all_ele[i][reason] = undefined;
+
+                    if (all_ele[i]["rock"] == undefined && all_ele[i]["popular"] == undefined && all_ele[i]["active"] == undefined) {
+                        all_ele[i].style = "";
+                    }
+                }
+
+
+            }
+        }
+
+    }
+    function changeSong(s) {
+        let victim = 0;
+        let reason = "new";
+        switch (s.toString(10)) {
+            case "1":
+                victim = document.getElementById("PopularS");
+                reason = "popular";
+                break;
+                
+            case "2":
+                victim = document.getElementById("RockS");
+                reason = "rock";
+                break;
+
+            default:
+                victim = document.getElementById("New");
+        }
+        let all_ele = document.getElementsByClassName("playlist-item");
+
+        if (victim.checked) {
+            for (let i = 0; i <= all_ele.length; i++) {
+                if (all_ele[i] == undefined) { continue; }
+
+                // all are none
+                let flag = false;
+                for (let j = 0; j <= all_ele[i].childNodes.length; j++) {
+                    if (all_ele[i].childNodes[j] == undefined) { continue; }
+
+                    if (all_ele[i].childNodes[j].className == reason) {
+                        flag = true;
+                    }
+
+                }
+                if (flag == false) {
+                    all_ele[i].style = "display:none";
+                    all_ele[i][reason] = true;
+                }
+                
+                
+            }
+        }
+
+        else {
+            for (let i = 0; i <= all_ele.length; i++) {
+                if (all_ele[i] == undefined) { continue; }
+
+                if (all_ele[i][reason] != undefined) {
+                    all_ele[i][reason] = undefined;
+                   
+                    if (all_ele[i]["rock"] == undefined && all_ele[i]["popular"] == undefined && all_ele[i]["new"] == undefined) {
+                        all_ele[i].style = "";
+                    }
+                }
+
+
+            }
+        }
+
+    }
+    function refresh_ele() {
+        let all_ele = document.getElementsByClassName("playlist-item");
+        let frag = document.createDocumentFragment();
+        let non, sorted = [];
+
+        for (let i = 0; i <= all_ele.length; i++) {
+            if (all_ele[i] == undefined) { continue; }
+
+            if (all_ele[i].style == "display:none") {
+                non.push(all_ele[i]);
+            }
+            else {
+                sorted.push(all_ele[i]);
+            }
+        }
+
+        //$('#clickme').insertAfter( ".container" );
+        for (let item of sorted) {
+            frag.appendChild(item);
+        }
+        all_ele.appendChild(frag);
+
+       
+    }
+</script>
 <!-- Playlist section end -->
