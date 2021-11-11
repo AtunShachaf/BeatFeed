@@ -72,14 +72,14 @@ function LoadConcerts(res) {
         });
 
         if (content != '')
-            $('#concertDetails').html(content);
+        $('#concertDetails').html(content);
         else {
             $('#concertDetails').parent().css("text-align", "center");
             $('#concertDetails').html('<strong>There are no upcoming concerts. :(</strong>')
         }
 
         if (prevContent != '')
-            $('#concert-prev').html(prevContent);
+        $('#concert-prev').html(prevContent);
         else {
             $('#concert-prev').parent().css("text-align", "center");
             $('#concert-prev').html('<strong>There were no upcoming concerts. :(</strong>');

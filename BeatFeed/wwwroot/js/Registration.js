@@ -51,9 +51,5 @@
 
 $(document).ready(function (event) {
     $('#pass').click(checkPassword());
-//    $('#submit').click(function (event) {
-//        var strengthBadge = document.getElementById('StrengthDisp');
-//        if(strengthBadge.textContent == 'Weak')
-//            event.preventDefault();
     })
 })

@@ -136,30 +136,30 @@ function LoadSongs(res, dropdown) {
             else
                 content += '                              <div class="player_controls_box">';
             content +='                                        <button class="jp-prev player_button" tabindex="' + count_from_zero + '"></button>' +
-            '                                        <button class="jp-play player_button" tabindex="' + count_from_zero + '"></button>' +
-            '                                        <button class="jp-next player_button" tabindex="' + count_from_zero + '"></button>' +
-            '                                        <button class="jp-stop player_button" tabindex="' + count_from_zero + '"></button>' +
-            '                                        <button onclick="openDropDown(' + count_from_zero + ')" class="jp-add player_button" tabindex="' + count_from_zero + '">+</button>' + dropdown.replaceAll('dropdowntoreplace2', count_from_zero).replace('dropdowntoreplace', count_from_zero).replaceAll('song_id', x.songId) +
-            '                                        </div>' +
-            '                                    <!-- Progress Bar -->' +
-            '                                    <div class="player_bars">' +
-            '                                        <div class="jp-progress">' +
-            '                                            <div class="jp-seek-bar">' +
-            '                                                <div>' +
-            '                                                    <div class="jp-play-bar"><div class="jp-current-time" role="timer" aria-label="time">0:00</div></div>' +
-            '                                                </div>' +
-            '                                            </div>' +
-            '                                        </div>' +
-            '                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>' +
-            '                                    </div>' +
-            '                                </div>' +
-            '                            </div>' +
-            '                        </div>' +
-            '                    </div>' +
-            '                </div>' +
-            '            </div>' +
-            '        </div>' +
-            '    </div>';
+                '                                        <button class="jp-play player_button" tabindex="' + count_from_zero + '"></button>' +
+                '                                        <button class="jp-next player_button" tabindex="' + count_from_zero + '"></button>' +
+                '                                        <button class="jp-stop player_button" tabindex="' + count_from_zero + '"></button>' +
+                '                                        <button onclick="openDropDown(' + count_from_zero + ')" class="jp-add player_button" tabindex="' + count_from_zero + '">+</button>' + dropdown.replaceAll('dropdowntoreplace2', count_from_zero).replace('dropdowntoreplace', count_from_zero).replaceAll('song_id', x.songId) +
+                '                                        </div>' +
+                '                                    <!-- Progress Bar -->' +
+                '                                    <div class="player_bars">' +
+                '                                        <div class="jp-progress">' +
+                '                                            <div class="jp-seek-bar">' +
+                '                                                <div>' +
+                '                                                    <div class="jp-play-bar"><div class="jp-current-time" role="timer" aria-label="time">0:00</div></div>' +
+                '                                                </div>' +
+                '                                            </div>' +
+                '                                        </div>' +
+                '                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>' +
+                '                                    </div>' +
+                '                                </div>' +
+                '                            </div>' +
+                '                        </div>' +
+                '                    </div>' +
+                '                </div>' +
+                '            </div>' +
+                '        </div>' +
+                '    </div>';
 
             count_from_zero ++;
             count_from_one ++;

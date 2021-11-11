@@ -101,7 +101,7 @@
 			this.prev('.jp-play').click();
 			FastforwardTrack(e);
 		});
-		alert("2");
+
 		thisItem.find('.jp-prev').click(function (e) { 
 			RewindTrack(e);
 		});

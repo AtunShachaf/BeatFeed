@@ -42,9 +42,11 @@ function LoadSongs(res) {
 
     console.log(res.songs.length);
 
+
     if (res.errorCode) {
         content = '<h3>Error Occur.</h3>';
     }
+
     else if (res.songs.length == 0) {
         content = '<h3>There are no songs in this playlist :/</h3><strong style="position:relative;left:9px;font-size:17px;">Please use the search bar and add some songs to the list.</strong>';
         $('#LoadSongs').html(content);
