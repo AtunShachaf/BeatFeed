@@ -93,6 +93,10 @@ ol {
 /*---------------------
 Anonymous Index page
  -----------------------*/
+.my-icon img{
+    position:relative;
+    left:3px;
+}
 
 .index-title {
     position: relative;
@@ -100,28 +104,36 @@ Anonymous Index page
     margin-right: auto;
 }
     .index-title h2 {
-        position:relative;
-        margin-left:auto;
-        margin-right:auto;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        top: 90px;
+        margin-top: 15px;
+        text-shadow: 2px 2px 8px #000000;
+        color:white;
     }
 .index-text p {
     position: relative;
     margin-left: auto;
     margin-right: auto;
+    text-align:center;
 }
 
     .index-text{
-
+        position:relative;
+        top:90px;
 }
  .index-buttons {
+     position:relative;
      margin-left:auto;
      margin-right:auto;
+     top:150px;
  }
-.index-buttons .index-login{
-    position: relative;
-    margin-left:auto;
-    
-}
+    .index-buttons .index-login {
+        position: relative;
+        margin-right: auto;
+        left:340px;
+    }
 .index-buttons .index-signup {
     position: relative;
     margin-right:auto;
@@ -159,11 +171,10 @@ Helper CSS
     padding-bottom: 0px;
 }
 .spad3 {
-
-    margin-top: 364px;
-    padding-top: 50px;
+    margin-top: 286px;
+    padding-top: 65px;
     padding-bottom: 10px;
-    margin-bottom:auto;
+    margin-bottom: auto;
 }
 .text-white h1,
 .text-white h2,
@@ -808,7 +819,7 @@ Playlist Page
 .playlist-name{
     position:relative;
     top:20px;
-    left:30px;
+    left:20px;
 
 }
 .delete-playlist-btn input{
@@ -855,21 +866,21 @@ User homepage
         cursor: pointer;
     }
 
-        .playlist-filter li.mixitup-control-active {
-            border-bottom: 2px solid #fc0254;
-        }
-
+=.playlist-filter li.mixitup-control-active {
+=    border-bottom: 2px solid #fc0254;
+=}
+=
 .playlist-item {
     text-align: center;
     padding: 0 11px;
     margin-bottom: 30px;
 }
 
-    .playlist-item img {
-        min-width: 100%;
-        border-radius: 40px;
-        margin-bottom: 30px;
-    }
+.playlist-item img {
+    min-width: 100%;
+    border-radius: 40px;
+    margin-bottom: 30px;
+}
 
 .search-form {
     position: relative;
@@ -884,14 +895,23 @@ User homepage
 }
 
 .create-playlist {
+    position: relative;
     width: 50%;
     margin-right: auto;
-
+    left:60px;
+    top:20px;
 }
 .create-suggested-list {
+    position:relative;
+    right:60px;
+    top:20px;
 
 }
-
+.playlist-items-name{
+    position:relative;
+    text-align:center;
+    top:-15px;
+}
 #CreateSuggestedPlaylist {
     width: 300px;
 }
@@ -904,9 +924,10 @@ User homepage
     position: relative;
     width: 100%;
     margin-left: auto;
-    right: 17px;
+    right: 90px;
     text-align: right;
     top:120px;
+
 }
 
 .attempt-container input {
@@ -983,14 +1004,14 @@ User homepage
     text-align: right;
     font-size: 72px;
     top: 70px;
-    right: 300px;
+    right: 420px;
     color:white;
     text-shadow: 2px 2px 8px #000000;
 }
 .playlists-title h2{
     position:relative;
     margin-top:90px;
-    top:30px;
+    top:40px;
     font-size: 42px;
 }
 .playlist-filter-title h5 {
@@ -1358,11 +1379,13 @@ Category page
     .song-info-box .song-info h4 {
         font-size: 20px;
         margin-bottom: 4px;
+        text-align:left;
     }
 
     .song-info-box .song-info p {
         font-size: 14px;
         margin-bottom: 0;
+        text-align:left;
     }
 
 .songs-links {
@@ -1620,11 +1643,21 @@ Artist Page
     border-radius: 24px;
     background: #fff;
 }
+.anotherfix{
 
+}
+.bottom-row{
+    margin-bottom:100px;
+}
 .transparent {
     background-color: hsla(0, 100%, 100%, 0.5);
+    margin: -30px;
+    position: relative;
+    padding: -30px;
 }
-
+.row-test{
+    margin-top:500px;
+}
 .player-box {
     display: -webkit-box;
     display: -ms-flexbox;

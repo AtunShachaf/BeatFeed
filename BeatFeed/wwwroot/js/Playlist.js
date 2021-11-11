@@ -16,7 +16,7 @@ function LoadPlaylists(res) {
                 '<a href="/Playlists/Playlist/' + x.playlistId + '">' +
                 '<img src="/img/playlist/' + x.imgUrl + '.jpg" alt="">' + '</a>' +
                 ' <a href="/Playlists/Playlist/' + x.playlistId + '">' +
-                '<h5>' + x.name + '</h5>' +
+                '<h5 class="playlist-items-name">' + x.name + '</h5>' +
                 '</a>' +
                 '</div>' +
                 '</div >';
