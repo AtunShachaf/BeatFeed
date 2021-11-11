@@ -218,7 +218,7 @@ Commom elements
 	text-align: center;
 	border-radius: 50%;
 	border: none;
-	background: #08192D;
+	background: #2d0819;
 }
 
 
@@ -247,7 +247,7 @@ Commom elements
 }
 
 .site-btn.site-login {
-	background: #08192D;
+	background: #2d0819;
 }
 
 /* Preloder */
@@ -321,7 +321,7 @@ Header section
 .header-section {
 	padding-left: 55px;
 	padding-right: 72px;
-	background: #08192D;
+	background: #2d0819;
 }
 
 .site-logo {
@@ -567,7 +567,7 @@ How section
  -------------------*/
 
 .how-section {
-	background-color: #08192D;
+	background-color: #2d0819;
 }
 
 .how-item .hi-icon {
@@ -840,7 +840,7 @@ Playlist page
 	border-radius: 80px;
 	color: #fff;
 	font-size: 15px;
-	background: #08192D;
+	background: #2d0819;
 }
 
 /* ----------------
