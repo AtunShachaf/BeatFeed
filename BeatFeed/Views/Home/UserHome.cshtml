@@ -8,51 +8,58 @@
 }
 
 <!-- Playlist section -->
-<section class="playlist-section spad">
+<section class="playlist-section spad2">
     <div class="container-fluid">
-        <div class="section-title">
-            <h2> Welcome @User.Identity.Name</h2>
-        </div>
-        <!-- Create playlist button -->
-        <div class="d-flex flex-row-reverse">
-            <div class="search-form create-playlist">
-                <input id="PlaylistName" type="text" placeholder="Create playlist">
-                <button id="CreatePlaylist">Create Playlist</button>
-            </div>
-            <span class="alert-danger"></span>
-        </div>
-        <!-- End Ceate playlist button -->
-        
-        <!-- Suggested playlist button -->
-        <div class="d-flex flex-row-reverse">
-            <div class="search-form create-playlist">
-                <button id="CreateSuggestedPlaylist" value="suggested">Suggested Playlist</button>
-            </div>
-        </div>
-        
-        <div class="clearfix"></div>
+
         <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h4>Your playlist lookup</h4>
+            <div class="col-lg-8">
+                <div class="user-home-title">
+                    <h2> Welcome @User.Identity.Name</h2>
                 </div>
+
             </div>
         </div>
 
         <div class="row">
+            <div class="col-lg-3">
+                <div class="section-title playlists-title">
+                    <h2>Your playlists:</h2>
+                </div>
+            </div>
+            <div class="col-lg-4 attempt-container">
+
+                <h5>Playlist filter:</h5>
+                <input id="PlaylistFilter" onkeyup="FilterPlaylists()" type="text" placeholder="Enter a Playlist Name">
+
+            </div>
+        </div>
+
+        <div id="AllPlaylists" class="row playlist-area">
+        </div>
+        <div class="row">
+            <!-- Create playlist button -->
             <div class="col-lg-6">
-                <div class="search-form search-song-filter">
-                    <input id="PlaylistFilter" onkeyup="FilterPlaylists()" type="text" placeholder="Search for a playlist">
+                <div class="search-form create-playlist">
+                    <input id="PlaylistName" type="text" placeholder="Enter a new playlist name">
+                    <button id="CreatePlaylist">Create Playlist</button>
+                </div>
+                <span class="alert-danger"></span>
+            </div>
+            <!-- End Ceate playlist button -->
+            <div class="col-lg-6">
+                <div class="search-form create-suggested-list">
+                    <button id="CreateSuggestedPlaylist" value="suggested">Create a Suggested Playlist</button>
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
-        <div id="AllPlaylists" class="row playlist-area">
-        </div>
+
+        <!-- Suggested playlist button -->
+
+
     </div>
 </section>
 
 @section Scripts
-{ 
+{
     <script src="~/js/Playlist.js"></script>
 }

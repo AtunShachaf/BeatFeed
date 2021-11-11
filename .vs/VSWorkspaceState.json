@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BeatFeed",
+    "\\BeatFeed\\Views",
+    "\\BeatFeed\\Views\\Home",
+    "\\BeatFeed\\Views\\Shared",
+    "\\BeatFeed\\wwwroot",
+    "\\BeatFeed\\wwwroot\\css",
+    "\\BeatFeed\\wwwroot\\js",
+    "\\BeatFeed\\wwwroot\\lib"
   ],
-  "SelectedNode": "\\BeatFeed.sln",
+  "SelectedNode": "\\BeatFeed\\Views\\Home\\UserHome.cshtml",
   "PreviewInSolutionExplorer": false
 }

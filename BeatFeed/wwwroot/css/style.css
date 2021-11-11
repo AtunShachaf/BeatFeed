@@ -19,7 +19,12 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 }
-
+p, td, title, h1, h2, h3, h4, h5, h6, h7, strong, ul{
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+}
 h1,
 h2,
 h3,
@@ -85,7 +90,54 @@ ol {
 	padding: 0;
 	margin: 0;
 }
+/*---------------------
+Anonymous Index page
+ -----------------------*/
+.my-icon img{
+    position:relative;
+    left:3px;
+}
 
+.index-title {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+    .index-title h2 {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        top: 90px;
+        margin-top: 15px;
+        text-shadow: 2px 2px 8px #000000;
+        color:white;
+    }
+.index-text p {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}
+
+    .index-text{
+        position:relative;
+        top:90px;
+}
+ .index-buttons {
+     position:relative;
+     margin-left:auto;
+     margin-right:auto;
+     top:150px;
+ }
+    .index-buttons .index-login {
+        position: relative;
+        margin-right: auto;
+        left:340px;
+    }
+.index-buttons .index-signup {
+    position: relative;
+    margin-right:auto;
+}
 /*---------------------
 Helper CSS
  -----------------------*/
@@ -99,7 +151,7 @@ Helper CSS
 }
 
 .section-title h2 {
-	font-size: 60px;
+        font-size: 55px;
 }
 
 .set-bg {
@@ -109,10 +161,22 @@ Helper CSS
 }
 
 .spad {
-	padding-top: 105px;
-	padding-bottom: 105px;
+    margin-top: 140px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
+.spad2 {
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.spad3 {
+    margin-top: 286px;
+    padding-top: 65px;
+    padding-bottom: 10px;
+    margin-bottom: auto;
+}
 .text-white h1,
 .text-white h2,
 .text-white h3,
@@ -282,12 +346,14 @@ Commom elements
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
+
 	50% {
 		-webkit-transform: rotate(180deg);
 		transform: rotate(180deg);
 		border: 4px solid #673ab7;
 		border-left-color: transparent;
 	}
+
 	100% {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
@@ -302,17 +368,20 @@ Commom elements
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
+
 	50% {
 		-webkit-transform: rotate(180deg);
 		border: 4px solid #673ab7;
 		border-left-color: transparent;
 	}
+
 	100% {
 		-webkit-transform: rotate(360deg);
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
 }
+
 
 /*------------------
 Header section
@@ -326,8 +395,8 @@ Header section
 
 .site-logo {
 	display: inline-block;
-	padding: 0;
-	/*padding: 44px 15px;*/
+    position:absolute;
+    top: 10px;
 }
 
 .header-right {
@@ -580,6 +649,10 @@ How section
 	margin-right: 25px;
 }
 
+.moveMeUp h2 {
+    margin-top: -35px;
+}
+
 .how-item .hi-icon img {
 	position: absolute;
 	bottom: 0;
@@ -594,6 +667,9 @@ How section
 	opacity: 0.6;
 }
 
+.how-item {
+    margin-top: -45px;
+}
 /* ----------------
 Concept section
  -------------------*/
@@ -740,13 +816,37 @@ Other pages
  -------------------*/
 
 /* ----------------
-Playlist page
+Playlist Page
  -------------------*/
 
-.playlist-section {
-	padding: 105px 42px;
-}
+.playlist-name{
+    position:relative;
+    top:20px;
+    left:20px;
 
+}
+.delete-playlist-btn input{
+    position:relative;
+    float:right;
+    top:20px;
+}
+.playlist-image-container img {
+    position: relative;
+
+    min-width: 100%;
+    border-radius: 40px;
+}
+.playlist-image-container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+.songs-container{
+    text-align:center;
+}
+/* ----------------
+User homepage
+ -------------------*/
 .playlist-section .section-title {
 	float: left;
 }
@@ -769,10 +869,10 @@ Playlist page
 	cursor: pointer;
 }
 
-.playlist-filter li.mixitup-control-active {
-	border-bottom: 2px solid #fc0254;
-}
-
+=.playlist-filter li.mixitup-control-active {
+=    border-bottom: 2px solid #fc0254;
+=}
+=
 .playlist-item {
 	text-align: center;
 	padding: 0 11px;
@@ -798,12 +898,56 @@ Playlist page
 }
 
 .create-playlist {
-	width: 30%;
-	margin-left: auto;
+    position: relative;
+    width: 50%;
+    margin-right: auto;
+    left:60px;
+    top:20px;
+}
+.create-suggested-list {
+    position:relative;
+    right:60px;
+    top:20px;
+
+}
+.playlist-items-name{
+    position:relative;
+    text-align:center;
+    top:-15px;
+}
+#CreateSuggestedPlaylist {
+    width: 300px;
 }
 
 .search-song-filter {
 	width: 80%;
+}
+
+.attempt-container {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    right: 90px;
+    text-align: right;
+    top:120px;
+
+}
+
+.attempt-container input {
+    height: 40px;
+    border: none;
+    border-radius: 80px;
+    font-size: 15px;
+    background: #d0d7db;
+    display: inline-flex;
+    text-align: center;
+    margin-left:auto;
+
+}
+.attempt-container h5{
+    position:relative;
+    left:-40px;
+    
 }
 
 .search-form input {
@@ -815,6 +959,17 @@ Playlist page
 	border-radius: 80px;
 	font-size: 15px;
 	background: #d0d7db;
+    display: inline-flex;
+}
+
+.searchDiv {
+    display: inline-flex;
+    top: 25px;
+    left: 16.9%;
+    width: 50%;
+    height:10%;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .search-form button {
@@ -842,7 +997,41 @@ Playlist page
 	font-size: 15px;
 	background: #08192D;
 }
+.
+.user-home-title {
+    position:relative;
+    text-align:right;
+}
+.user-home-title h2 {
+    position: relative;
+    text-align: right;
+    font-size: 72px;
+    top: 70px;
+    right: 420px;
+    color:white;
+    text-shadow: 2px 2px 8px #000000;
+}
+.playlists-title h2{
+    position:relative;
+    margin-top:90px;
+    top:40px;
+    font-size: 42px;
+}
+.playlist-filter-title h5 {
 
+}
+.instructions {
+    position:relative;
+    width: 700px;
+    float:left;
+    top:40px;
+}
+.instructions h3 {
+
+}
+.instructions h4 {
+    font-size: 18px;
+}
 /* ----------------
 Blog page
  -------------------*/
@@ -897,7 +1086,7 @@ Blog page
 }
 
 /* ----------------
-Contact page
+Concerts page
  -------------------*/
 
 .map {
@@ -905,12 +1094,23 @@ Contact page
 	background: #ddd;
 }
 
+#MapDiv {
+    width: 970px;
+    height: 857px;
+    position: absolute;
+}
+
 .map iframe {
-	position: absolute;
-	width: 100%;
+    position: relative;
+    width: 992px;
 	height: 100%;
 	left: 0;
 	top: 0;
+}
+
+.myOverflowFix {
+    max-height: 857px;
+    overflow: hidden;
 }
 
 .contact-warp {
@@ -954,9 +1154,13 @@ Contact page
 	font-weight: 500;
 }
 
-.weather-side{
-	margin-right: 300px;
+.weather-side {
+    position: relative;
+    text-align: center;
+    top: 13px;
+    left: 70px;
 }
+
 .contact-container {
 	padding: 5px 5px 0px 45px;
 }
@@ -1000,6 +1204,79 @@ Contact page
 	margin-bottom: 57px;
 }
 
+.upcoming {
+    border-style: dashed;
+    border-color: #D0D7DB;
+    min-height: 500px;
+    max-height: 500px;
+    left: -18.5px;
+}
+
+    .occured h4,
+    .upcoming h4 {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+.occured {
+    border-style: dashed;
+    border-color: #D0D7DB;
+    left: 47.7%;
+    bottom: 500px;
+    min-height: 500px;
+    max-height: 500px;
+}
+
+.weather-container {
+    position: relative;
+    bottom: 500px;
+    width: 80%;
+    left: 100px;
+}
+
+.titleColor {
+    color: white;
+}
+
+.lightBG {
+    background-color: #5A7E8F;
+}
+
+.weatherTable {
+    padding-left: 25px;
+    padding-top: 5px;
+}
+
+.the-forecast {
+    border-style: dashed;
+    border-color: #D0D7DB;
+    width: 280px;
+    margin-left: 230px;
+    max-height: 200px;
+    margin-top: -8px;
+}
+
+    .the-forecast h4 {
+        margin-top: 10px;
+    }
+
+.the-forcast td {
+}
+
+.col-6 h4 {
+    text-underline-position: under;
+    text-decoration: underline;
+}
+
+.the-forecast h4 {
+    text-align: center;
+    text-underline-position: under;
+    text-decoration: underline;
+}
+
+.centerTest img {
+    padding-left: 80px;
+}
 /* ----------------
 Category page
  -------------------*/
@@ -1107,11 +1384,13 @@ Category page
 .song-info-box .song-info h4 {
 	font-size: 20px;
 	margin-bottom: 4px;
+        text-align:left;
 }
 
 .song-info-box .song-info p {
 	font-size: 14px;
 	margin-bottom: 0;
+        text-align:left;
 }
 
 .songs-links {
@@ -1153,7 +1432,7 @@ Category page
 	text-align: center;
 }
 
-.player_controls>button:not(:last-of-type) {
+.player_controls > button:not(:last-of-type) {
 	margin-right: 4px;
 }
 
@@ -1187,6 +1466,7 @@ Category page
 	height: 13px;
 	content: url(../img/icons/play.png);
 }
+
 .jp-clip:after {
 	left: 3px;
 	top: 1px;
@@ -1194,6 +1474,7 @@ Category page
 	height: 1px;
 	content: url(../img/icons/clip.png);
 }
+
 .jp-remove:after {
 	left: 4px;
 	top: 3px;
@@ -1201,6 +1482,7 @@ Category page
 	height: 1px;
 	content: url(../img/icons/remove.png);
 }
+
 .jp-state-playing .jp-play::after,
 .playing .jp-play::after {
 	top: 4px !important;
@@ -1242,7 +1524,7 @@ Category page
 	margin-bottom: -5px;
 }
 
-.jp-seek-bar>div {
+    .jp-seek-bar > div {
 	height: 2px;
 	background: #d0d7db;
 }
@@ -1279,21 +1561,108 @@ Category page
 	right: 0;
 	bottom: -16px;
 }
-
 /* ----------------
-Artest Page
+Statistics Page
+ -------------------*/
+.statisticsGraphs {
+    text-align: center;
+    margin-left: 50px;
+    margin-top: -40px;
+    position: relative;
+}
+.statisticsGraphs h3{
+
+}
+g{
+    font-size:16px;
+}
+.statistics-title {
+    position:relative;
+    text-shadow: 2px 2px 8px #000000;
+}
+.statistics-title h2{
+    color:white;
+    font-size:64px;
+    text-align:center;
+}
+#graph1, #graph2{
+    position:relative;
+}
+#graph1{
+    margin-left:auto;
+}
+#graph2{
+    margin-right:auto;
+}
+.graph1-title h3{
+    position:relative;
+    right:100px;
+
+}
+.graph2-title h3 {
+    position: relative;
+    right: 100px;
+}
+/* ----------------
+Admin Page
  -------------------*/
 
+.admin-title {
+    position: relative;
+    padding-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 2px 2px 8px #000000;
+}
+.admin-title h2{
+    color:white;
+}
+.admin-panel-title {
+    padding-top:50px;
+    position:relative;
+    top:50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.admin-panel-title h3{
+    text-decoration:underline;
+}
+.admin-panel-buttons {
+
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.
+/* ----------------
+Artist Page
+ -------------------*/
 .player-section {
 	padding: 57px 53px;
 }
 
+
+
 .player-box {
-	padding: 77px 121px 100px 81px;
+    padding: 50px 121px 50px 81px;
 	border-radius: 24px;
 	background: #fff;
 }
+.anotherfix{
 
+}
+.bottom-row{
+    margin-bottom:100px;
+}
+.transparent {
+    background-color: hsla(0, 100%, 100%, 0.5);
+    margin: -30px;
+    position: relative;
+    padding: -30px;
+}
+.row-test{
+    margin-top:500px;
+}
 .player-box {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -1306,6 +1675,8 @@ Artest Page
 	width: calc(100% - 382px);
 }
 
+
+
 .tarck-thumb-warp {
 	width: 382px;
 }
@@ -1313,10 +1684,13 @@ Artest Page
 .tarck-thumb {
 	max-width: 333px;
 	position: relative;
+
 }
 
 .tarck-thumb img {
 	border-radius: 22px;
+        width: auto;
+        height: 350px;
 }
 
 .tarck-thumb .wp-play {
@@ -1347,12 +1721,22 @@ Artest Page
 }
 
 .wave-player-info h2 {
-	font-size: 48px;
+    font-size: 100px;
 	font-weight: 600;
+    text-align: center;
+    margin-right:130px;
+    margin-top: 80px;
+   color: #fff;
+  text-shadow:
+    0 0 42px #0fa,
+    0 0 82px #fa0,
+    0 0 92px #0fa,
+    0 0 102px #A6182D,
+    0 0 151px #0fa;
 }
 
 .wave-player-info p {
-	font-size: 14px;
+    font-size: 12px;
 }
 
 .wavePlayer_controls {
@@ -1384,28 +1768,35 @@ Artest Page
 }
 
 .songs-details-section {
-	padding: 100px 38px 50px;
-	background: #f9fcfd;
+    padding: 60px 38px 50px;
+    background: hsla(0, 100%, 100%, 0.5);
 }
 
 .song-details-box {
-	margin-bottom: 30px;
-	overflow: hidden;
+    margin-bottom: 15px;
+    background-color: hsla(0, 100%, 100%, 0.5);
 }
 
 .song-details-box h3 {
-	margin-bottom: 50px;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
 .song-details-box ul {
 	list-style: none;
-	max-width: 310px;
+    max-width: 500px;
+    margin-left: 100px;
+}
+.marg {
+    list-style: none;
+    max-width: 500px;
+    margin-left: -100px;
 }
 
 .song-details-box ul li {
 	margin-bottom: 15px;
 	font-size: 14px;
-	line-height: 2;
+    line-height: 1.3;
 }
 
 .song-details-box ul strong {
@@ -1447,7 +1838,7 @@ Artest Page
 }
 
 .artist-details .ad-text {
-	overflow: hidden;
+    overflow: scroll;
 }
 
 .song-details-box .song-info-box img {
@@ -1575,9 +1966,11 @@ Responsive
 	.header-right {
 		margin-left: 50px;
 	}
+
 	.main-menu li a {
 		margin-left: 25px;
 	}
+
 	.main-menu .sub-menu {
 		left: 25px;
 	}
@@ -1590,49 +1983,63 @@ Responsive
 		padding-left: 15px;
 		padding-right: 20px;
 	}
+
 	.header-right {
 		margin-left: 20px;
 	}
+
 	.main-menu li a {
 		margin-left: 15px;
 	}
+
 	.main-menu .sub-menu {
 		left: 15px;
 	}
+
 	.hr-img img {
 		min-width: 500px;
 		position: relative;
 	}
+
 	.sub-list {
 		padding: 70px 15px 50px 90px;
 	}
+
 	.category-section .section-title,
 	.playlist-section .section-title {
 		float: none;
 	}
+
 	.category-links,
 	.playlist-filter {
 		text-align: left;
 	}
+
 	.playlist-item {
 		padding: 0;
 	}
+
 	.player-box {
 		padding: 70px 80px 80px;
 	}
+
 	.similar-song {
 		margin-bottom: 70px;
 	}
+
 	.artist-details img {
 		float: none;
 		margin-bottom: 30px;
 	}
+
 	.contact-warp {
 		padding: 100px 15px 60px 40px;
 	}
+
 	.category-item {
 		margin: 0;
 	}
+
 	.category-section {
 		padding: 100px 0;
 	}
@@ -1644,33 +2051,40 @@ Responsive
 	.hr-img {
 		display: none;
 	}
+
 	.slicknav_menu {
 		display: block;
 		background: transparent;
 		margin-top: -60px;
 	}
+
 	.slicknav_nav {
 		background: #1c294a;
 		margin-bottom: 35px;
 	}
+
 	.slicknav_nav ul {
 		margin: 0 0 0 0;
 	}
+
 	.slicknav_nav .slicknav_row,
 	.slicknav_nav a {
 		padding: 12px 25px;
 		margin: 0;
 	}
+
 	.slicknav_nav a:hover {
 		border-radius: 0;
 		color: #fc0254;
 		background: transparent;
 	}
+
 	.slicknav_btn {
 		position: relative;
 		top: -24px;
 		background: #1c294a;
 	}
+
 	.main-menu {
 		display: none;
 	}
@@ -1678,71 +2092,90 @@ Responsive
 	.sub-text {
 		margin-bottom: 50px;
 	}
+
 	.footer-widget {
 		margin-bottom: 40px;
 	}
+
 	.category-section .section-title,
 	.playlist-section .section-title {
 		float: none;
 	}
+
 	.category-links,
 	.playlist-filter {
 		text-align: left;
 	}
+
 	.playlist-item {
 		padding: 0;
 	}
+
 	.player-box {
 		display: block;
 		padding: 77px 90px 100px;
 	}
+
 	.wave-player-warp {
 		width: 100%;
 	}
+
 	.wave-player-warp .songs-links {
 		text-align: center;
 		padding-top: 0;
 		margin-bottom: 40px;
 	}
+
 	.tarck-thumb-warp {
 		width: 100%;
 	}
+
 	.tarck-thumb-warp .tarck-thumb {
 		margin: 0 auto;
 	}
+
 	.wave-player-info,
 	.wavePlayer_controls {
 		text-align: center;
 	}
+
 	.similar-song {
 		margin-bottom: 60px;
 	}
+
 	.playlist-section,
 	.category-section {
 		padding: 100px 0;
 	}
+
 	.playlist-section .container,
 	.category-section .container {
 		max-width: 100%;
 	}
+
 	.category-item {
 		margin: 0;
 	}
+
 	.category-item .ci-link {
 		top: 26px;
 		bottom: auto;
 	}
+
 	.category-item .ci-text {
 		position: absolute;
 		bottom: 10px;
 		left: 20px;
 	}
+
 	.map {
 		height: 450px;
 	}
+
 	.song-details-box ul {
 		max-width: 100%;
 	}
+
 	.search-form {
 		margin-top: 40px;
 	}
@@ -1754,28 +2187,34 @@ Responsive
 	.hr-img {
 		display: none;
 	}
+
 	.slicknav_menu {
 		display: block;
 		background: transparent;
 		margin-top: -60px;
 	}
+
 	.slicknav_nav {
 		background: #1c294a;
 		margin-bottom: 35px;
 	}
+
 	.slicknav_nav ul {
 		margin: 0 0 0 0;
 	}
+
 	.slicknav_nav .slicknav_row,
 	.slicknav_nav a {
 		padding: 12px 25px;
 		margin: 0;
 	}
+
 	.slicknav_nav a:hover {
 		border-radius: 0;
 		color: #fc0254;
 		background: transparent;
 	}
+
 	.slicknav_btn {
 		position: relative;
 		top: -24px;
@@ -1785,100 +2224,131 @@ Responsive
 	.main-menu {
 		display: none;
 	}
+
 	.sub-list {
 		padding: 60px 15px 50px 30px;
 	}
+
 	.sub-text {
 		margin-bottom: 50px;
 	}
+
 	.footer-widget {
 		margin-bottom: 40px;
 	}
+
 	.category-section .section-title,
 	.playlist-section .section-title {
 		float: none;
 	}
+
 	.category-links,
 	.playlist-filter {
 		text-align: left;
 	}
+
 	.playlist-filter li,
 	.category-links a {
 		margin-right: 15px;
 	}
+
 	.playlist-item {
 		padding: 0;
 	}
+
 	.playlist-section {
 		padding: 100px 0;
 	}
+
 	.artist-details img {
 		float: none;
 		margin-bottom: 30px;
 	}
+
 	.player-box {
 		display: block;
 	}
+
 	.wave-player-warp {
 		width: 100%;
 	}
+
 	.wave-player-warp .songs-links {
 		text-align: center;
 		padding-top: 0;
 		margin-bottom: 40px;
 	}
+
 	.tarck-thumb-warp {
 		width: 100%;
 	}
+
 	.tarck-thumb-warp .tarck-thumb {
 		margin: 0 auto;
 	}
+
 	.wave-player-info,
 	.wavePlayer_controls {
 		text-align: center;
 	}
+
 	.player-box {
 		padding: 75px 40px 80px;
 	}
+
 	.similar-song {
 		margin-bottom: 60px;
 	}
+
 	.songs-details-section {
 		padding: 100px 0px 50px;
+        
+
 	}
+
 	.similar-songs-section,
 	.playlist-section {
 		padding: 100px 0;
 	}
+
 	.similar-songs-section .container,
 	.playlist-section .container {
 		max-width: 100%;
 	}
+
 	.category-section {
 		padding: 105px 0;
 	}
+
 	.category-section .container {
 		max-width: 100%;
 	}
+
 	.header-section {
 		padding: 0 15px;
 	}
+
 	.category-item {
 		margin: 0 0 30px;
 	}
+
 	.map {
 		height: 450px;
 	}
+
 	.contact-warp {
 		padding: 100px 40px;
 	}
+
 	.songs-links {
 		text-align: left;
 		padding-top: 40px;
 	}
+
 	.song-details-box ul {
 		max-width: 100%;
 	}
+
 	.search-form {
 		margin-top: 40px;
 	}
@@ -1892,67 +2362,86 @@ Responsive
 	.sub-text h2 {
 		font-size: 36px;
 	}
+
 	.wave-player-info h2 {
 		font-size: 24px;
 	}
+
 	.header-section {
 		padding: 0;
 	}
+
 	.player-box {
 		padding: 40px;
 	}
+
 	.contact-warp {
 		padding: 100px 15px;
 	}
+
 	.category-item .ci-link {
 		top: 26px;
 		bottom: auto;
 	}
+
 	.category-item .ci-text {
 		position: absolute;
 		bottom: 10px;
 		left: 20px;
 	}
+
 	.single_player_container .jp-interface {
 		display: block;
 	}
+
 	.song-details-box .player_controls_box,
 	.player_controls_box {
 		width: 100%;
 	}
+
 	.song-details-box .player_bars,
 	.player_bars {
 		width: 100%;
 	}
+
 	.song-details-box .jp-duration {
 		bottom: -19px;
 	}
+
 	.jp-duration {
 		bottom: -31px;
 	}
+
 	.song-details-box .song-item {
 		margin-bottom: 40px;
 	}
+
 	.player-section,
 	.player-box {
 		padding: 15px;
 	}
+
 	.social-links a {
 		margin-right: 20px;
 	}
+
 	.search-form {
 		text-align: center;
 	}
+
 	.search-form input {
 		padding-right: 41px;
 	}
+
 	.search-form button {
 		position: relative;
 		margin-top: 20px;
 	}
-	idan{
-		margin:0;
+
+    idan {
+        margin: 0;
 	}
+
 	.test {
 		position: relative;
 		height: 100%;

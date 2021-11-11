@@ -50,7 +50,7 @@ namespace BeatFeed.Controllers
                     _ => View(),
                 };
             }
-            
+
         }
 
         [AllowAnonymous]
@@ -70,7 +70,7 @@ namespace BeatFeed.Controllers
         {
             return View();
         }
-       
+
 
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -95,7 +95,7 @@ namespace BeatFeed.Controllers
         [Authorize(Roles = "User")]
         public async Task<IActionResult> Search(String keyWord)
         {
-            
+
             if (keyWord != null || keyWord != "")
             {
 
@@ -104,6 +104,9 @@ namespace BeatFeed.Controllers
                 var songs = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
                 var albums = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
                 var artists = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Artist.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
+                var artistsByGanre = new List<Artist>();
+                if (songs.Count == 0 && albums.Count == 0 && artists.Count == 0)
+                    artistsByGanre = await _context.Artist.Include(a => a).Where(a => a.Genre.ToLower().Contains(keyWord.ToLower())).ToListAsync();
 
                 foreach (var song in songs)
                 {
@@ -137,10 +140,18 @@ namespace BeatFeed.Controllers
                     }
 
                 }
+
+                foreach (var a in artistsByGanre)
+                {
+                    var songsByGanre = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Artist.Name.ToLower().Contains(a.Name.ToLower())).ToListAsync();
+                    foreach (var song in songsByGanre)
+                        results.Add(song);
+
+                }
                 return View(results);
             }
 
-            
+
             return View();
         }
 

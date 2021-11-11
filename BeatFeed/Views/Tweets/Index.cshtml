@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Tweets";
-    Layout = "~/Views/Shared/_LoggedInLayout.cshtml";
+    Layout = "~/Views/Shared/_LoggedInAdminLayout.cshtml";
 }
 
 <table id="UserList" style="width: 100%;"></table>
@@ -25,7 +25,6 @@
 
 @section scripts {
     <script>
-        alert("test");
 $.ajax({
             url: "/Tweets/GetTweets",
             type: "GET",

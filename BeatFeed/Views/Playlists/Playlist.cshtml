@@ -9,33 +9,32 @@
 }
 
 <!-- Title section -->
-<section class="category-section spad">
+<section class="spad2">
     <div class="container-fluid">
-
-        <!-- Playlist name -->
-        <div class="section-title">
-            <h2>
-                @Html.DisplayFor(model => model.Name)
-            </h2>
+        <div class="row">
+            <div class="col-lg-6 playlist-name">
+                <!-- Playlist name -->
+                <h2>
+                    @Html.DisplayFor(model => model.Name)
+                </h2>
+            </div>
+            <!-- End of Playlist name -->
+            <div class="col-lg-6 delete-playlist-btn">
+                <!-- Delete playlist button -->
+                <form asp-action="DeletePlaylist">
+                    <input id="playlist_id" type="hidden" name="playlist_id" value="@Html.DisplayFor(model => model.Id)" />
+                    <submit>
+                        <input type="submit" class="site-btn" value="delete playlist">
+                    </submit>
+                </form>
+            </div>
+            <!-- End Delete playlist button -->
         </div>
-        <!-- End of Playlist name -->
-        <!-- Delete playlist button -->
-        <div class="d-flex flex-row-reverse">
-            <form asp-action="DeletePlaylist">
-                <input id="playlist_id" type="hidden" name="playlist_id" value="@Html.DisplayFor(model => model.Id)" />
-                <submit>
-                    <input type="submit" class="site-btn" value="delete playlist">
-                </submit>
-            </form>
-        </div>
-        <!-- End Delete playlist button -->
-
         <div class="clearfix"></div>
 
         <!-- Photo of playlist -->
         <div class="row">
-            <div class="mx-auto">
-                <div class="category-item">
+            <div class="col-lg-3 col-md-4 col-sm-6 playlist-image-container">
                     <img src="~/img/playlist/@imageId" alt="">
                 </div>
             </div>
@@ -54,18 +53,20 @@
                             <iframe width="852" height="480" src="" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
-                    <!--End of VideoClip Popup-->
+        </div>
+        <!--End of VideoClip Popup-->
 
-                    <div class="clearfix"></div>
-                </div>
+        <div class="clearfix"></div>
+    </div>
 </section>
 
 <!-- Songs section  -->
 <section class="songs-section">
-    <div id="LoadSongs" class="container"></div>
+    <div class="row songs-container">
+        <div id="LoadSongs" class="container"></div>
+    </div>
 </section>
 
 @section Scripts

@@ -47,6 +47,7 @@
 			//Get current progress and decrement
 			var currentProgress = GetPlayerProgress();
 			var futureProgress = currentProgress - 5;
+			alert(currentProgress);
 			//If it goes past the starting point - stop rewinding and pause
 			if (futureProgress <= 0) {
 				rewinding = false;
@@ -90,6 +91,7 @@
 	
 	$('.single_player').each( function() {
 		// var ffaction;
+		alert("1");
 		var rwaction,
 			rewinding,
 			fastforward,
@@ -103,6 +105,7 @@
 		thisItem.find('.jp-prev').click(function (e) { 
 			RewindTrack(e);
 		});
+		alert(3);
 
 
 	});

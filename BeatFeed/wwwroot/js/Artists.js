@@ -8,6 +8,35 @@
         success: LoadConcerts
     });
 }
+function playVid(str) {
+    $(".url_holder").attr("data-media", str);
+    $(".popup").attr("style", "")
+    $('.modal').modal({ show: true })
+    $(".url_holder")[0].click();
+}
+function popUp() {
+    $("[data-media]").on("click", function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var videoUrl = $this.attr("data-media");
+        var popup = $this.attr("href");
+        var $popupIframe = $(popup).find("iframe");
+        $popupIframe.attr("src", videoUrl);
+
+        $this.closest(".test").addClass("show-popup");
+    });
+
+    $(".popup").on("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $(".test").removeClass("show-popup");
+    });
+
+    $(".popup > iframe").on("click", function (e) {
+        e.stopPropagation();
+    });
+}
 
 function LoadConcerts(res) {
 
@@ -80,7 +109,7 @@ function LoadSongs(res, dropdown) {
             content += '    <div class="container">' +
                 '        <!-- song -->' +
                 '        <div class="song-item">' +
-                '            <div class="row">' +
+                '            <div class="row justify-content-center">' +
                 '                <div class="col-lg-4">' +
                 '                    <div class="song-info-box">' +
                 '                        <img src="' + x.imgLink + '" alt="">' +
@@ -97,9 +126,16 @@ function LoadSongs(res, dropdown) {
                 '                            <div class="jp-audio jp_container_' + count_from_one + '" role="application" aria-label="media player">' +
                 '                                <div class="jp-gui jp-interface">' +
 
-                '                                    <!-- Player Controls -->' +
-                '                                    <div class="player_controls_box">' +
-                '                                        <button class="jp-prev player_button" tabindex="' + count_from_zero + '"></button>' +
+                '                                    <!-- Player Controls -->';
+            if (x.clipURL != null) {
+                var embed = x.clipURL.replace("watch?v=", "embed/");
+                embed = embed.replace("https:", "");
+                content += '                         <div class="player_controls_box">' +
+                    '                                        <button onclick="playVid(\'' + embed + '\')" class="jp-clip player_button" tabindex="' + count_from_zero + '"></button>';
+            }
+            else
+                content += '                              <div class="player_controls_box">';
+            content +='                                        <button class="jp-prev player_button" tabindex="' + count_from_zero + '"></button>' +
                 '                                        <button class="jp-play player_button" tabindex="' + count_from_zero + '"></button>' +
                 '                                        <button class="jp-next player_button" tabindex="' + count_from_zero + '"></button>' +
                 '                                        <button class="jp-stop player_button" tabindex="' + count_from_zero + '"></button>' +
@@ -162,4 +198,5 @@ function openDropDown(id_of_dropdown) {
 $(document).ready(function () {
     fetchConcerts();
     fetchSongs();
+    popUp();
 })

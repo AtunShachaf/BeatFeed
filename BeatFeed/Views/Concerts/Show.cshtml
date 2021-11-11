@@ -5,28 +5,30 @@
     Layout = "~/Views/Shared/_LoggedInLayout.cshtml";
 }
 
-<section class="contact-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 p-0">
+<section class="contact-section myOverflowFix">
+    <div class="container-fluid myOverflowFix">
+        <div class="row myOverflowFix">
+            <div class="col-lg-6 p-0 myOverflowFix">
                 <!-- Map -->
-                <div id="MapDiv" style="width: 992px; height: 992px">
+                <div id="MapDiv">
                 </div>
             </div>
-            <div class="col-lg-6 p-0">
+            <div class="col-lg-6 p-0 myOverflowFix lightBG">
                 <div class="contact-container">
                     <div class="section-title mb-0" style="text-align: center">
                         <h3>@Html.DisplayFor(model => model.Name)'s Performances:</h3>
-                        <p>View previous and upcoming concerts dates and locations.</p>
+                        <p class="titleColor">View previous and upcoming concerts information.</p>
                     </div>
                 </div>
                 <div class="contact-container">
-                    <div class="col-6">
+                    <div class="col-6 upcoming">
                         <h4>Upcoming Concerts:</h4>
+                        </br>
                         <ul id="concertDetails"></ul>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 occured">
                         <h4>Previous Concerts:</h4>
+                        </br>
                         <ul id="concert-prev"></ul>
                     </div>
                 </div>
@@ -35,7 +37,7 @@
                     <div class="weather__container">
                         <div class="weather-side">
                             <div class="search-form search-song-filter">
-                                <input id="CityName" type="text" placeholder="Enter a city">
+                                <input id="CityName" type="text" placeholder="Enter a city name">
                                 <button id="WeatherLookup">Check Weather</button>
                             </div>
                             <span class="alert-danger"></span>
@@ -45,30 +47,31 @@
                         <span id="lblError" style="color:red"></span>
                     </div>
                     <div class="the-forecast" style="display:none">
-                        <h3>Weather Forecast</h3>
-                        <table>
-                            <tr>
-                                <td>
-                                    <strong>Weather :</strong>
-                                    <img id="imgWeatherIconUrl" alt="" src="" title="Weather Icon" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Temperature:</strong>
-                                    <label id="lblTemp"></label> °C
-                                    <br />
-                                    <strong>Description:</strong>
-                                    <label id="lblDescription"></label>
-                                    <br />
-                                    <strong>Humidity:</strong>
-                                    <label id="lblHumidity"></label>%
-                                    <br />
-                                    <br />
+                        <h4>Weather Forecast</h4>
+                        <div class="weatherTable">
+                            <table>
+                                <tr class="centerTest">
+                                    <td>
+                                        <img id="imgWeatherIconUrl" alt="" src="" title="Weather Icon" />
+                                    </td>
+                                </tr>
+                                <tr class="centerTest">
+                                    <td>
+                                        <strong>Temperature:</strong>
+                                        <label id="lblTemp"></label> °C
+                                        <br />
+                                        <strong>Description:</strong>
+                                        <label id="lblDescription"></label>
+                                        <br />
+                                        <strong>Humidity:</strong>
+                                        <label id="lblHumidity"></label>%
+                                        <br />
+                                        <br />
 
-                                </td>
-                            </tr>
-                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
