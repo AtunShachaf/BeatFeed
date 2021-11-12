@@ -49,6 +49,7 @@ function LoadConcerts(res) {
         content += '<ul>'
         res.concerts.forEach(x => {
             content +=
+                '<a href="/Concerts/Show/' + $("#ArtistId").val() + '"</a>' +
                 '<li><strong>' + x.name + ', ' + x.country + ', ' + x.city + ', ' + x.address + '</strong>' +
                 '<div class="clearfix"></div>';
 

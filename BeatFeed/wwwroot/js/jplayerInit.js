@@ -34,8 +34,8 @@
 				volume: 0.8,
 				muted: false,
 				backgroundColor: '#000000',
-				errorAlerts: true,
-				warningAlerts: true
+				errorAlerts: false,
+				warningAlerts: false
 			});
 		});
 	}

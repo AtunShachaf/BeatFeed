@@ -95,7 +95,11 @@ namespace BeatFeed.Controllers
         [Authorize(Roles = "User")]
         public async Task<IActionResult> Search(String keyWord)
         {
-
+            if (keyWord.ToLower().Equals("all"))
+            {
+                var songs = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).ToListAsync();
+                return View(songs);
+            }
             if (keyWord != null || keyWord != "")
             {
 

@@ -57,11 +57,11 @@ namespace BeatFeed.Controllers
             {
                 
                 // Identify the creation of suggested playlist
-                if (Name == "suggested")
+                if (Name == "Suggested")
                 {
 
                     // Create the playlist if it does not exist
-                    var isExist = await _context.Playlist.FirstOrDefaultAsync(m => m.Name == "suggested" && m.User.Id.ToString() == userId);
+                    var isExist = await _context.Playlist.FirstOrDefaultAsync(m => m.Name == "Suggested" && m.User.Id.ToString() == userId);
 
                     // Collected recommended songs
 
@@ -97,7 +97,7 @@ namespace BeatFeed.Controllers
                     if (isExist != null)
                     {
                         // Get the existing suggested playlist id 
-                        var suggestedPlaylistToRemove = await _context.Playlist.FirstOrDefaultAsync(m => m.Name == "suggested" && m.User.Id.ToString() == userId);
+                        var suggestedPlaylistToRemove = await _context.Playlist.FirstOrDefaultAsync(m => m.Name == "Suggested" && m.User.Id.ToString() == userId);
                         _context.Playlist.Remove(suggestedPlaylistToRemove);
                         await _context.SaveChangesAsync();
                     }

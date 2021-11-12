@@ -11,6 +11,12 @@
     }
 </style>
 <form class="login100-form validate-form" asp-action="SignUp">
+    <div class="close-signup">
+        <a asp-controller="Home" asp-action="Index">
+            <img src="~/img/close.png" />
+        </a>
+    </div>
+
     <span class="login100-form-logo">
         <i class="zmdi zmdi-playlist-audio"></i>
     </span>
@@ -18,6 +24,7 @@
     <span class="login100-form-title p-b-34 p-t-27">
         Sign Up
     </span>
+
 
     <div class="wrap-input100 validate-input" data-validate="Display Name">
         <input asp-for="DisplayName" class="input100" type="text" name="DisplayName" placeholder="Display Name">
@@ -43,6 +50,7 @@
         <span asp-validation-for="Password" class="alert-danger"></span>
     </div>
     <div id="StrengthDisp" class="displayBadge" style="background-color:white">Password Strength</div>
+    </br>
     <div class="wrap-input100 validate-input" data-validate="Confirm password">
         <input asp-for="ConfirmPassword" class="input100" type="password" name="ConfirmPassword" placeholder="Confirm Password">
         <span class="focus-input100" data-placeholder="&#xf191;"></span>
@@ -55,4 +63,5 @@
         </button>
     </div>
 </form>
-
+<script type="text/javascript" src="~/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="~/js/Registration.js"></script>
