@@ -5,7 +5,7 @@
 
 <!-- Playlist section -->
 
-<section class="playlist-section spad">
+<section class="playlist-section spad2">
     <div class="container-fluid" onload="mainWindow">
         <div class="section-title">
             <h2>Search results</h2>
@@ -52,7 +52,7 @@
                 foreach (var item in Model)
                 {
                    
-                        <div class="mix col-lg-3 col-md-4 col-sm-6 Genres">
+                        <div class="mix col-lg-2 col-md-3 col-sm-3 Genres">
                  
                                         <div class="playlist-item">
                                             <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
@@ -82,7 +82,7 @@
 
                                 if (!isInArtistList)
                                 {
-                <div class="mix col-lg-3 col-md-4 col-sm-6 artists">
+                <div class="mix col-lg-2 col-md-3 col-sm-3 artists">
                     <div class="playlist-item">
                         <img src=@Html.DisplayFor(modelItem => item.Album.Artist.ImageLink) alt="">
                         <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
@@ -107,7 +107,7 @@
 
                                 if (!isInAlbumList)
                                 {
-                <div class="mix col-lg-3 col-md-4 col-sm-6 movies">
+                <div class="mix col-lg-2 col-md-3 col-sm-3 movies">
                     <div class="playlist-item">
                         <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">
                         <a href="/Artists/Artist/@Html.DisplayFor(modelItem => item.Album.Artist.Id)">
