@@ -34,7 +34,7 @@ $.ajax({
                 if (res.length > 0) {
                     $('#UserList').append('<tr><th>Account</th><th>Comment</th></tr>')
                     $.each(res, function (i, User) {
-                        $('#UserList').append('<tr><td> BeatFeed </td>    <td>' + User.comment + '</td></tr>')
+                        $('#UserList').append('<tr><td>' + User.nickname + '</td>    <td>' + User.comment + '</td></tr>')
                     });
                 }
             }

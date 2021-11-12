@@ -11,13 +11,13 @@
             <h2>Search results</h2>
         </div>
         <ul class="playlist-filter controls">
-            <li class="control" data-filter=".genres">Songs</li>
+            <li class="control" data-filter=".Genres">Songs</li>
             <li class="control" data-filter=".artists">Artists</li>
             <li class="control" data-filter=".movies">Albums</li>
             <li id="clickme" class="control" data-filter=".all">All Playlist</li>
         </ul>
         <div class="container">
-            <div class="mix genres">
+            <div class="mix Genres">
                 <ul class="playlist-filter">
                     <!-- songs that CounterPlayed > 10  -->
                     <li>  <input type="checkbox" id="PopularS" name="PopularS" value="PopularS" onclick="changeSong(1)"> Popular</li>
@@ -52,7 +52,7 @@
                 foreach (var item in Model)
                 {
                    
-                        <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
+                        <div class="mix col-lg-3 col-md-4 col-sm-6 Genres">
                  
                                         <div class="playlist-item">
                                             <img src=@Html.DisplayFor(modelItem => item.Album.ImageLink) alt="">

@@ -104,9 +104,9 @@ namespace BeatFeed.Controllers
                 var songs = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
                 var albums = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
                 var artists = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Artist.Name.ToLower().Contains(keyWord.ToLower())).ToListAsync();
-                var artistsByGanre = new List<Artist>();
+                var artistsByGenre = new List<Artist>();
                 if (songs.Count == 0 && albums.Count == 0 && artists.Count == 0)
-                    artistsByGanre = await _context.Artist.Include(a => a).Where(a => a.Genre.ToLower().Contains(keyWord.ToLower())).ToListAsync();
+                    artistsByGenre = await _context.Artist.Include(a => a).Where(a => a.Genre.ToLower().Contains(keyWord.ToLower())).ToListAsync();
 
                 foreach (var song in songs)
                 {
@@ -141,10 +141,10 @@ namespace BeatFeed.Controllers
 
                 }
 
-                foreach (var a in artistsByGanre)
+                foreach (var a in artistsByGenre)
                 {
-                    var songsByGanre = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Artist.Name.ToLower().Contains(a.Name.ToLower())).ToListAsync();
-                    foreach (var song in songsByGanre)
+                    var songsByGenre = await _context.Song.Include(o => o.Album).ThenInclude(bo => bo.Artist).Where(c => c.Album.Artist.Name.ToLower().Contains(a.Name.ToLower())).ToListAsync();
+                    foreach (var song in songsByGenre)
                         results.Add(song);
 
                 }

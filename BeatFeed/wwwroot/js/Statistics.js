@@ -1,7 +1,7 @@
-﻿function fetchGanres() {
+﻿function fetchGenres() {
     $.ajax({
         type: 'GET',
-        url: '/Artists/GetGanreListAjax',
+        url: '/Artists/GetGenreListAjax',
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: LoadGraph1
@@ -45,9 +45,9 @@ function LoadGraph1(res) {
     legend.append("text")
         .text(function (d) {
             if(d.data.count == 1)
-                return d.data.count + " " + d.data.ganre + " Artist";
+                return d.data.count + " " + d.data.Genre + " Artist";
             else
-                return d.data.count + " " + d.data.ganre + " Artists";
+                return d.data.count + " " + d.data.Genre + " Artists";
         })
         .classed("text", true)
         .attr("x", 30)
@@ -93,6 +93,6 @@ function LoadGraph2(details) {
 
 
 $(document).ready(function () {
-    fetchGanres();
+    fetchGenres();
     fetchCities();
 })

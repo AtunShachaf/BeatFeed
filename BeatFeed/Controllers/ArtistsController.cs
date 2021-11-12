@@ -21,14 +21,14 @@ namespace BeatFeed.Controllers
             _context = context;
         }
 
-        private class GanreCount
+        private class GenreCount
         {
-            public string Ganre { get; set; }
+            public string Genre { get; set; }
             public int Count { get; set; }
 
-            public GanreCount(string a, int b)
+            public GenreCount(string a, int b)
             {
-                Ganre = a;
+                Genre = a;
                 Count = b;
             }
         }
@@ -212,29 +212,29 @@ namespace BeatFeed.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetGanreListAjax()
+        public async Task<IActionResult> GetGenreListAjax()
         {
-            Dictionary<string, int> GanreCount = new Dictionary<string, int>();
-            List<GanreCount> GanreList = new List<GanreCount>();
+            Dictionary<string, int> GenreCount = new Dictionary<string, int>();
+            List<GenreCount> GenreList = new List<GenreCount>();
             var artists = await _context.Artist.ToListAsync();
             foreach(var artist in artists)
             {
-                var ganres = artist.Genre.Split(",");
-                foreach(var ganre in ganres)
+                var Genres = artist.Genre.Split(",");
+                foreach(var Genre in Genres)
                 {
-                    if (GanreCount.ContainsKey(ganre))
+                    if (GenreCount.ContainsKey(Genre))
                     {
-                        GanreCount[ganre] += 1;
+                        GenreCount[Genre] += 1;
                     }
                     else
-                        GanreCount[ganre] = 1;
+                        GenreCount[Genre] = 1;
                 }
             }
-            foreach (KeyValuePair<string, int> entry in GanreCount)
+            foreach (KeyValuePair<string, int> entry in GenreCount)
             {
-                GanreList.Add(new GanreCount(entry.Key, entry.Value));
+                GenreList.Add(new GenreCount(entry.Key, entry.Value));
             }
-            return Json(GanreList);
+            return Json(GenreList);
         }
     }
 }

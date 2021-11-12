@@ -82,16 +82,16 @@ namespace BeatFeed.Controllers
                         list_of_songs = _context.Song.Include(a => a.Album).OrderByDescending(s => s.CounterPlayed).Select(s=> s.Album.Id).Take(5);
                     }
 
-                    // Get the top genre out of all the songs that belong to the user by taking the album's genre
-                    var top_genre = (from album in _context.Album
+                    // Get the top Genre out of all the songs that belong to the user by taking the album's Genre
+                    var top_Genre = (from album in _context.Album
                                      where list_of_songs.Contains(album.Id)
-                                     group album by album.Genre into genre
-                                     orderby genre.Count() descending
-                                     select genre.Key).FirstOrDefault();
+                                     group album by album.Genre into Genre
+                                     orderby Genre.Count() descending
+                                     select Genre.Key).FirstOrDefault();
 
 
                     // Getting the top songs
-                    var top_songs = _context.Song.Include(a => a.Album).Where(s => s.Album.Genre == top_genre).OrderByDescending(s => s.CounterPlayed).Take(5).ToList();
+                    var top_songs = _context.Song.Include(a => a.Album).Where(s => s.Album.Genre == top_Genre).OrderByDescending(s => s.CounterPlayed).Take(5).ToList();
 
                     // Create the suggested playlist 
                     if (isExist != null)

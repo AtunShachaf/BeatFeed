@@ -28,10 +28,10 @@ namespace BeatFeed.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Statistics()
         {
-            var genres = from o in _context.Artist
+            var Genres = from o in _context.Artist
                          group o by o.Genre into oc
                          select new { Genre = oc.Key, Count = oc.Count() };
-            ViewData["genres"] = JsonConvert.SerializeObject(genres.ToArray());
+            ViewData["Genres"] = JsonConvert.SerializeObject(Genres.ToArray());
 
             var places = from o in _context.Concert
                          group o by o.City into oc
