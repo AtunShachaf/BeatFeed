@@ -45,9 +45,9 @@ function LoadGraph1(res) {
     legend.append("text")
         .text(function (d) {
             if(d.data.count == 1)
-                return d.data.count + " " + d.data.Genre + " Artist";
+                return d.data.count + " " + d.data.genre + " Artist";
             else
-                return d.data.count + " " + d.data.Genre + " Artists";
+                return d.data.count + " " + d.data.genre + " Artists";
         })
         .classed("text", true)
         .attr("x", 30)
