@@ -56,9 +56,9 @@ namespace BeatFeed.Data
                                           "/images/artists/Ed-Sheeran/ed.jpg",
                                           "/images/artists/Rihanna/rihanna.jpg"};
 
-            string[] artistArtistLinks = {  "Linkin Park is an American rock band from Agoura Hills, California. </br> The band's current lineup comprises vocalist/rhythm guitarist/keyboardist Mike Shinoda, lead guitarist Brad Delson, bassist Dave Farrell, DJ/turntablist Joe Hahn and drummer Rob Bourdon, all of whom are founding members. Vocalists Mark Wakefield and Chester Bennington are former members of the band. Categorized as alternative rock, Linkin Park's earlier music spanned a fusion of heavy metal and hip hop, while their later music features more electronica and pop elements.",
+            string[] artistArtistLinks = {  "Linkin Park is an American rock band from Agoura Hills, California. The band's current lineup comprises vocalist/rhythm guitarist/keyboardist Mike Shinoda, lead guitarist Brad Delson, bassist Dave Farrell, DJ/turntablist Joe Hahn and drummer Rob Bourdon, all of whom are founding members. Vocalists Mark Wakefield and Chester Bennington are former members of the band. Categorized as alternative rock, Linkin Park's earlier music spanned a fusion of heavy metal and hip hop, while their later music features more electronica and pop elements.",
                                             "Adele Laurie Blue Adkins MBE (born 5 May 1988) is an English singer and songwriter. She is one of the world's best-selling music artists, with sales of over 120 million records.",
-                                            "Edward Christopher Sheeran MBE (/ˈʃɪərən/; born 17 February 1991) is an English singer-songwriter. He has sold more than 150 million records worldwide, making him one of the world's best-selling music artists.[6] He has 84.5 million RIAA-certified units in the US, and two of his albums are in the list of the best-selling albums in UK chart history. In December 2019, the Official Charts Company named him artist of the decade, with the most combined success in the UK album and singles charts in the 2010s",
+                                            "Edward Christopher Sheeran MBE (born 17 February 1991) is an English singer-songwriter. He has sold more than 150 million records worldwide, making him one of the world's best-selling music artists.He has 84.5 million RIAA-certified units in the US, and two of his albums are in the list of the best-selling albums in UK chart history. In December 2019, the Official Charts Company named him artist of the decade, with the most combined success in the UK album and singles charts in the 2010s",
                                             "Robyn Rihanna Fenty (born February 20, 1988), known professionally as Rihanna, is a Barbadian singer, actress, fashion designer, and businesswoman. Born in Saint Michael and raised in Bridgetown, Barbados, Rihanna was discovered by American record producer Evan Rogers who invited her to the United States to record demo tapes. After signing with Def Jam in 2005, she soon gained recognition with the release of her first two studio albums, Music of the Sun (2005) and A Girl Like Me (2006), both of which were influenced by Caribbean music and peaked within the top ten of the US Billboard 200 chart."
                                           };
 
@@ -129,8 +129,8 @@ namespace BeatFeed.Data
 
                                       "For fans of: R&B, Pop, Reggae, and Hip-Hop.",
                                       "",
-                                      "Capacity: 25,000\nFor fans of: R & B, Pop, Reggae, and Hip-Hop",
-                                      "Capacity: 12,500\nFor fans of: R & B, Pop, Reggae, and Hip-Hop."
+                                      "Capacity: 25,000 For fans of: R & B, Pop, Reggae, and Hip-Hop",
+                                      "Capacity: 12,500 For fans of: R & B, Pop, Reggae, and Hip-Hop."
 
 
 
@@ -227,13 +227,13 @@ namespace BeatFeed.Data
 
                 //Ed Sheeran (Total 12 Songs)
                 "Eraser", "Castle on the Hill", "Dive", "Shape of You", "Perfect", "Galway Girl",
-                "Happier","Hearts Don’t Break Around Here", "New Man", "What Do I Know?",
-                 "How Would You Feel (Paean)", "Supermarket Flowers",
+                "Happier","Hearts Don’t Break", "New Man", "What Do I Know?",
+                 "How Would You Feel", "Supermarket Flowers",
 
                 //Rihanna (Total 11 Songs)
-                "S&M", "What’s My Name (Feat. Drake)", "Cheers (Drink to that)", "Fading", "Only Girl (In the world)",
-                "California King Bed", "Man Down",  "Raining Men (Feat. Nicki Minaj)", "Complicated",
-                "Skin", "Love the way you lie (Feat. Eminem) (Part II)"};
+                "S&M", "What’s My Name (Drake)", "Cheers (Drink to that)", "Fading", "Only Girl (In the world)",
+                "California King Bed", "Man Down",  "Raining Men (Nicki Minaj)", "Complicated",
+                "Skin", "Love the way you lie (Part II)"};
 
             int[] songCountersPlay = new int[47];
             for (int i = 0; i < 47; i++)
@@ -268,6 +268,7 @@ namespace BeatFeed.Data
                 "https://www.youtube.com/watch?v=mnH9FHfD0Zg",
                 "https://www.youtube.com/watch?v=hLQl3WQQoQ0",
                 "https://www.youtube.com/watch?v=RnOh_0Qapg4",
+
                 //Ed Sheeran
                 "https://www.youtube.com/watch?v=J5TOQ69dlec",
                 "https://www.youtube.com/watch?v=K0ibBPhiaG0",
@@ -281,6 +282,7 @@ namespace BeatFeed.Data
                 "https://www.youtube.com/watch?v=Somv3cMp6zs",
                 "https://www.youtube.com/watch?v=wY473jAptyw",
                 "https://www.youtube.com/watch?v=3Mk0F6mLKik",
+
                 //Rihanna
                 "https://www.youtube.com/watch?v=KdS6HFQ_LUc",
                 "https://www.youtube.com/watch?v=U0CGsw6h60k",

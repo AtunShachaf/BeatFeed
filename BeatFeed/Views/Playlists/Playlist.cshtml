@@ -11,54 +11,45 @@
 <!-- Title section -->
 <section class="spad2">
     <div class="container-fluid">
+        </br>
         <div class="row">
-            <div class="col-lg-6 playlist-name">
+            <div class="playlist-name">
                 <!-- Playlist name -->
                 <h2>
                     @Html.DisplayFor(model => model.Name)
                 </h2>
             </div>
             <!-- End of Playlist name -->
-            <div class="col-lg-6 delete-playlist-btn">
-                <!-- Delete playlist button -->
-                <form asp-action="DeletePlaylist">
-                    <input id="playlist_id" type="hidden" name="playlist_id" value="@Html.DisplayFor(model => model.Id)" />
-                    <submit>
-                        <input type="submit" class="site-btn" value="delete playlist">
-                    </submit>
-                </form>
-            </div>
-            <!-- End Delete playlist button -->
         </div>
         <div class="clearfix"></div>
-
+        </br>
         <!-- Photo of playlist -->
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6 playlist-image-container">
-                    <img src="~/img/playlist/@imageId" alt="">
-                </div>
+                <img src="~/img/playlist/@imageId" alt="">
             </div>
         </div>
-        <!-- End of Currently playing -->
-        </br>
-        </br>
-        <!--VideoClip Popup-->
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="test">
-                        <idan><a href="#media-popup" data-media="" class="url_holder"></a></idan>
+    </div>
+    <!-- End of Currently playing -->
+    </br>
+    </br>
+    <!--VideoClip Popup-->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="test">
+                    <idan><a href="#media-popup" data-media="" class="url_holder"></a></idan>
 
-                        <div class="popup" id="media-popup" align="center" style="display:none">
-                            <iframe width="852" height="480" src="" frameborder="0" allowfullscreen></iframe>
-                        </div>
+                    <div class="popup" id="media-popup" align="center" style="display:none">
+                        <iframe width="852" height="480" src="" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
-        <!--End of VideoClip Popup-->
+    </div>
+    <!--End of VideoClip Popup-->
 
-        <div class="clearfix"></div>
+    <div class="clearfix"></div>
     </div>
 </section>
 
@@ -69,10 +60,26 @@
     </div>
 </section>
 
+<div class="row">
+    <div class="delete-playlist-btn">
+        <!-- Delete playlist button -->
+        <form asp-action="DeletePlaylist">
+            <input id="playlist_id" type="hidden" name="playlist_id" value="@Html.DisplayFor(model => model.Id)" />
+            <submit>
+                <input type="submit" class="site-btn" value="delete playlist">
+            </submit>
+        </form>
+    </div>
+</div>
+<div id="fixedContainer">
+    <canvas id="c"></canvas>
+</div>
+<!-- End Delete playlist button -->
 @section Scripts
 {
     <!-- Audio Player and Initialization -->
     <script src="~/js/jquery.jplayer.min.js"></script>
     <script src="~/js/jplayerInit.js"></script>
+    <script src="~/js/Canvas2.js"></script>
     <script src="~/js/PlaylistSongs.js"></script>
 }

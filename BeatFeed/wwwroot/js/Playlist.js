@@ -11,10 +11,10 @@ function LoadPlaylists(res) {
         content = '';
         res.playlists.forEach(x => {
             content +=
-                '<div id="wrapper" class="mix col-lg-3 col-md-4 col-sm-6 movies">' +
-                '<div id="playlist-item" class="playlist-item" >' +
+                '<div class="mix col-lg-3 col-md-4 col-sm-6 movies wrapper">' +
+                '<div class="playlist-item" >' +
                 '<a href="/Playlists/Playlist/' + x.playlistId + '">' +
-                '<img src="/img/playlist/' + x.imgUrl + '.jpg" alt="">' + '</a>' +
+                '<img src="/img/playlist/' + x.imgUrl + '.jpg" alt="" style="width:450px; height:300px">' + '</a>' +
                 ' <a href="/Playlists/Playlist/' + x.playlistId + '">' +
                 '<h5 class="playlist-items-name">' + x.name + '</h5>' +
                 '</a>' +
@@ -69,10 +69,16 @@ function CreateSuggestedPlaylist() {
 
 
 function CreatePlaylist() {
+    var input = $('#PlaylistName').val();
+    if (input == '' || input == null) {
+        $("#PlaylistName").attr("placeholder", "Please input a valid name.")
+        return;
+    }
+
     var playlist_data = {
         'Name': $("#PlaylistName").val()
     };
-    $("#PlaylistName").attr("placeholder", "Create more playlists").val("")
+    $("#PlaylistName").attr("placeholder", "Create more playlists")
     $.ajax({
         url: '/Playlists/CreatePlaylistAjax',
         data: playlist_data,

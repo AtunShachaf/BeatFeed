@@ -3,23 +3,29 @@
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 
-<section class="intro-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h1>Unauthorized</h1>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    You must have a BeatFeed account to access this page. If you have an existing account, please sign in, otherwise, you are welcome to join us by creating a new account.
-                </p>
-                <a asp-controller="Users" asp-action="Login" class="site-btn site-login">I Already have an account</a>
-                <span class=.hs-item>
-                    <a asp-controller="Users" asp-action="SignUp" class="site-btn">Create new account</a>
-                </span>
-            </div>
+<div class="container spad6">
+    <div class="row">
+        <div class="section-title index-title" id="unauth-title">
+            <h2>Unauthorized</h2>
         </div>
     </div>
-</section>
+    <div class="row justify-content-center">
+
+        <div class="small-bg" id="unauth-p-container">
+            <p>
+                You must have a BeatFeed account to access this page.</br>
+                If you have an existing account, please sign in.</br>
+                Otherwise, you are welcome to join us by creating a new account.
+            </p>
+        </div>
+    </div>
+    <div class="row index-buttons justify-content-center">
+        <div class="col-lg-6 index-login">
+            <a asp-controller="Users" asp-action="Login" class="site-btn site-login">I have an account</a>
+        </div>
+        <div class="col-lg-6 index-signup">
+            <a asp-controller="Users" asp-action="SignUp" class="site-btn">Create new account</a>
+        </div>
+    </div>
+</div>
+

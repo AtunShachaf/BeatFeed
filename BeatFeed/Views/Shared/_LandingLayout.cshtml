@@ -5,7 +5,7 @@
 <head>
     <title>@ViewBag.Title - BeatFeed</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Welcome BeatFeed">
+    <meta name="description" content="Welcome to BeatFeed">
     <meta name="keywords" content="music, playlists, BeatFeed">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -49,11 +49,16 @@
             </div>
         </div>
     </header>
-    <!-- Header section end -->
-    <!-- Intro section -->
-    @RenderBody()
-    <!-- Intro section end -->
-    <!-- Footer how to -->
+   
+        <!-- Header section end -->
+        <!-- Intro section -->
+        @RenderBody()
+     <div id="fixedContainer">
+        <canvas id="c"></canvas>
+    </div>
+        <!-- Intro section end -->
+        <!-- Footer how to -->
+    
     <footer class="how-section spad3 set-bg" data-setbg=@Url.Content("~/img/how-to-bg.jpg")>
         <div class="container text-white">
             <div class="section-title moveMeUp">
@@ -73,7 +78,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="how-item">
-                        <div class="hi-icon">
+                        <div class="hi-icon my-icon2">
                             <img src="~/img/icons/choose.png" alt="">
                         </div>
                         <h5>Choose Your music</h5>
@@ -106,6 +111,7 @@
                 </div>
             </div>
         </div>
+
     </footer>
     <!-- Footer how to end -->
     <!--====== Javascripts & Jquery ======-->
@@ -115,6 +121,8 @@
     <script src="~/js/owl.carousel.min.js"></script>
     <script src="~/js/mixitup.min.js"></script>
     <script src="~/js/main.js"></script>
+    <script src="~/js/Canvas.js"></script>
+
 
 </body>
 </html>

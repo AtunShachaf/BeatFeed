@@ -12,12 +12,9 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-lg-8">
                 <div class="user-home-title">
-                    <h2> Welcome @User.Identity.Name</h2>
+                    <h2><font face="Tahoma">Welcome @User.Identity.Name</font></h2>
                 </div>
-
-            </div>
         </div>
 
         <div class="row">
@@ -48,7 +45,7 @@
             <!-- End Ceate playlist button -->
             <div class="col-lg-6">
                 <div class="search-form create-suggested-list">
-                    <button id="CreateSuggestedPlaylist" value="suggested">Create a Suggested Playlist</button>
+                    <button id="CreateSuggestedPlaylist" value="Suggested">Create a Suggested Playlist</button>
                 </div>
             </div>
         </div>
@@ -58,8 +55,11 @@
 
     </div>
 </section>
-
+<div id="fixedContainer">
+    <canvas id="c"></canvas>
+</div>
 @section Scripts
 {
     <script src="~/js/Playlist.js"></script>
+    <script src="~/js/Canvas.js"></script>
 }
