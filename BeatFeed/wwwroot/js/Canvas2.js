@@ -1,69 +1,130 @@
-﻿let points = [];
-let tickSpeed = 10;
-let base = 180;
-let numPoints = 10;
-let maxTicks = 3000;
-let ticks = 0;
+﻿function paint() {
+    var w = c.width = window.innerWidth,
+        html = document.documentElement,
+        body = document.body;
+    h = c.height = Math.max(html.clientHeight, html.scrollHeight, html.offsetHeight, body.scrollHeight, body.offsetHeight),
+        ctx = c.getContext('2d'),
 
-function Point(x = random(width), y = random(height), a = random(PI)) {
-    this.x = x;
-    this.y = y;
-    this.a = a;
-    this.dx = cos(a);
-    this.dy = sin(a);
-    this.hue = (random(100) + base) % 360;
-    this.color = color(this.hue, 100, 100, .01);
-}
+        opts = {
 
-Point.prototype.update = function () {
-    this.x += this.dx;
-    this.y += this.dy;
-    if (this.x < 0 || this.x >= width) this.dx *= -1;
-    if (this.y < 0 || this.y >= height) this.dy *= -1;
-    stroke(this.color);
-    line(this.x, this.y, this.neighbor.x, this.neighbor.y);
-}
+            len: 30,
+            count: 100,
+            baseTime: 10,
+            addedTime: 10,
+            dieChance: .01,
+            spawnChance: 1,
+            sparkChance: .01,
+            sparkDist: 10,
+            sparkSize: 2,
 
-function setup() {
-    createCanvas();
-    colorMode(HSB);
-    windowResized();
-    blendMode(ADD);
-    strokeWeight(1.5);
-}
+            color: 'hsl(hue,100%,dark%)',
+            baseLight: 50,
+            addedLight: 10, // [50-10,50+10]
+            shadowToTimePropMult: 6,
+            baseLightInputMultiplier: 0.01,
+            addedLightInputMultiplier: .02,
 
-function init() {
-    points = [];
-    base = random(360);
-    ticks = 0;
+            cx: w / 2,
+            cy: h / 2,
+            repaintAlpha: .02,
+            hueChange: .05
+        },
+        tick = 0,
+        lines = [],
+        dieX = w / 2 / opts.len,
+        dieY = h / 2 / opts.len,
 
-    for (var i = 0; i < numPoints; i++) points.push(new Point());
+        baseRad = Math.PI * 2 / 6;
 
-    for (var i = 0; i < points.length; i++) {
-        let j = i;
-        while (j == i) j = floor(random(points.length));
-        points[i].neighbor = points[j];
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, w, h);
+
+    function loop() {
+
+        window.requestAnimationFrame(loop);
+
+        ++tick;
+
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(255,255,255,alp)'.replace('alp', opts.repaintAlpha);
+        ctx.fillRect(0, 0, w, h);
+        ctx.globalCompositeOperation = 'darker';
+
+        if (lines.length < opts.count && Math.random() < opts.spawnChance)
+            lines.push(new Line);
+
+        lines.map(function (line) { line.step(); });
     }
-}
+    function Line() {
 
-function draw() {
-    if (ticks > maxTicks) return;
-    for (var n = 0; n < tickSpeed; n++) {
-        for (var i = 0; i < points.length; i++) {
-            points[i].update();
-        }
-        ticks++;
+        this.reset();
     }
-}
+    Line.prototype.reset = function () {
 
-function mouseClicked() {
-    windowResized();
-}
+        this.x = 0;
+        this.y = 0;
+        this.addedX = 0;
+        this.addedY = 0;
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-    pixelDensity(1);
-    clear();
-    background(0);
-    init();
+        this.rad = 0;
+
+        this.lightInputMultiplier = opts.baseLightInputMultiplier + opts.addedLightInputMultiplier * Math.random();
+
+        this.color = opts.color.replace('hue', tick * opts.hueChange);
+        this.cumulativeTime = 0;
+
+        this.beginPhase();
+    }
+    Line.prototype.beginPhase = function () {
+
+        this.x += this.addedX;
+        this.y += this.addedY;
+
+        this.time = 0;
+        this.targetTime = (opts.baseTime + opts.addedTime * Math.random()) | 0;
+
+        this.rad += baseRad * (Math.random() < .5 ? 1 : -1);
+        this.addedX = Math.cos(this.rad);
+        this.addedY = Math.sin(this.rad);
+
+        if (Math.random() < opts.dieChance || this.x > dieX || this.x < -dieX || this.y > dieY || this.y < -dieY)
+            this.reset();
+    }
+    Line.prototype.step = function () {
+
+        ++this.time;
+        ++this.cumulativeTime;
+
+        if (this.time >= this.targetTime)
+            this.beginPhase();
+
+        var prop = this.time / this.targetTime,
+            wave = Math.sin(prop * Math.PI / 2),
+            x = this.addedX * wave,
+            y = this.addedY * wave;
+
+        ctx.shadowBlur = prop * opts.shadowToTimePropMult;
+        ctx.fillStyle = ctx.shadowColor = this.color.replace('dark', opts.baseLight + opts.addedLight * Math.sin(this.cumulativeTime * this.lightInputMultiplier));
+        ctx.fillRect(opts.cx + (this.x + x) * opts.len, opts.cy + (this.y + y) * opts.len, 2, 2);
+
+        if (Math.random() < opts.sparkChance)
+            ctx.fillRect(opts.cx + (this.x + x) * opts.len + Math.random() * opts.sparkDist * (Math.random() < .5 ? 1 : -1) - opts.sparkSize / 2, opts.cy + (this.y + y) * opts.len + Math.random() * opts.sparkDist * (Math.random() < .5 ? 1 : -1) - opts.sparkSize / 2, opts.sparkSize, opts.sparkSize)
+    }
+    loop();
+
+    window.addEventListener('resize', function () {
+
+        w = c.width = window.innerWidth;
+        h = c.height = Math.max(html.clientHeight, html.scrollHeight, html.offsetHeight, body.scrollHeight, body.offsetHeight);
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, w, h);
+
+        opts.cx = w / 2;
+        opts.cy = h / 2;
+
+        dieX = w / 2 / opts.len;
+        dieY = h / 2 / opts.len;
+    });
 }

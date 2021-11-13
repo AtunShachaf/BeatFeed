@@ -40,9 +40,6 @@ function LoadSongs(res) {
     content = ''
     playlistId = $("#playlist_id").val();
 
-    console.log(res.songs.length);
-
-
     if (res.errorCode) {
         content = '<h3>Error Occur.</h3>';
     }
@@ -50,6 +47,7 @@ function LoadSongs(res) {
     else if (res.songs.length == 0) {
         content = '<h3>There are no songs in this playlist :/</h3><strong style="position:relative;left:9px;font-size:17px;">Please use the search bar and add some songs to the list.</strong>';
         $('#LoadSongs').html(content);
+        paint();
         return;
     }
 
@@ -60,12 +58,12 @@ function LoadSongs(res) {
 
             content += '    <div class="container ">' +
                 '        <!-- song -->' +
-                '        <div class="song-item">' +
+                '        <div class="song-item small-bg">' +
                 '            <div class="row justify-content-center">' +
                 '                <div class="col-lg-4">' +
                 '                    <div class="song-info-box">' +
                 '                       <a href="/Artists/Artist/' + x.artistId + '">' +
-                '                        <img src="' + x.imgLink + '" alt="">' +
+                '                        <img class="song_img" src="' + x.imgLink + '" alt="">' +
                 '                        <div class="song-info">' +
                 '                            <a href="/Artists/Artist/' + x.artistId + '">' +
                 '                            <h4>' + x.name + '</h4>' +
@@ -123,6 +121,7 @@ function LoadSongs(res) {
 
         $('#LoadSongs').html(content);
 
+        paint();
         initSinglePlayer();
     }
 

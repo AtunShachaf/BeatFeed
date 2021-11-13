@@ -109,13 +109,13 @@ function LoadSongs(res, dropdown) {
         res.songs.forEach(x => {
             content += '    <div class="container">' +
                 '        <!-- song -->' +
-                '        <div class="song-item">' +
-                '            <div class="row justify-content-center">' +
+                '        <div class="song-item small-bg">' +
+                '            <div class="row">' +
                 '                <div class="col-lg-4">' +
                 '                    <div class="song-info-box">' +
                 '                        <img src="' + x.imgLink + '" alt="">' +
                 '                        <div class="song-info">' +
-                '                            <h4>' + x.name + '</h4>' +
+                '                            <h5>' + x.name + '</h5>' +
                 '                            <p>' + x.album + '</p>' +
                 '                        </div>' +
                 '                    </div>' +
@@ -168,6 +168,7 @@ function LoadSongs(res, dropdown) {
 
         $('#LoadSongs').html(content);
 
+        paint();
         initSinglePlayer();
     }
 
@@ -195,6 +196,8 @@ function addSongToPlaylist(playlist_id, song_id, dropdown_id) {
 function openDropDown(id_of_dropdown) {
     $('.dropdown').eq(id_of_dropdown).toggleClass('active');
 }
+
+
 
 $(document).ready(function () {
     fetchConcerts();

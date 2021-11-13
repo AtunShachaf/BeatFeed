@@ -10,12 +10,12 @@
         text-align: center;
     }
 </style>
-<form class="login100-form validate-form" asp-action="SignUp">
     <div class="close-signup">
         <a asp-controller="Home" asp-action="Index">
             <img src="~/img/close.png" />
         </a>
     </div>
+<form class="login100-form validate-form" asp-action="SignUp">
 
     <span class="login100-form-logo">
         <i class="zmdi zmdi-playlist-audio"></i>
@@ -47,7 +47,7 @@
     <div class="wrap-input100 validate-input" data-validate="Enter password">
         <input id="pass" asp-for="Password" class="input100" type="password" name="Password" placeholder="Password">
         <span class="focus-input100" data-placeholder="&#xf191;"></span>
-        <span asp-validation-for="Password" class="alert-danger"></span>
+        <span asp-validation-for="Password" class="alert-danger" id="pw-ad-field"></span>
     </div>
     <div id="StrengthDisp" class="displayBadge" style="background-color:white">Password Strength</div>
     </br>

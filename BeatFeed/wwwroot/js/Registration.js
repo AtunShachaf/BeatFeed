@@ -2,7 +2,6 @@
 function checkPassword() {
     // timeout before a callback is called
     var timeout;
-    alert("test4");
     // traversing the DOM and getting the input and span using their IDs
     var strengthBadge = document.getElementById('StrengthDisp');
     // The strong and weak password Regex pattern checker
@@ -49,8 +48,9 @@ $(document).ready(function (e) {
     $('#submit').click(function (event) {
         var strengthBadge = document.getElementById('StrengthDisp');
         if (strengthBadge.textContent == 'Weak') {
-            e.preventDefault();
-            alert("Please choose a stronger password.")
+            $("#pw-ad-field").html("Password must be at least 8 charachters long</br>also 1 uppercase, lowercase and special characters.");
+            event.preventDefault();
+           
         }
     })
 })

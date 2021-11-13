@@ -69,10 +69,16 @@ function CreateSuggestedPlaylist() {
 
 
 function CreatePlaylist() {
+    var input = $('#PlaylistName').val();
+    if (input == '' || input == null) {
+        $("#PlaylistName").attr("placeholder", "Please input a valid name.")
+        return;
+    }
+
     var playlist_data = {
         'Name': $("#PlaylistName").val()
     };
-    $("#PlaylistName").attr("placeholder", "Create more playlists").val("")
+    $("#PlaylistName").attr("placeholder", "Create more playlists")
     $.ajax({
         url: '/Playlists/CreatePlaylistAjax',
         data: playlist_data,
